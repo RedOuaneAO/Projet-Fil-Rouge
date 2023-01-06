@@ -20,9 +20,8 @@
 
     - **user**
         - user will be able to create a profile.
-        - View a list of apartments available for rent or sale (details).
         - search for apartments by price, location, space(number of rooms).
-        - View the apartment owner's contact information.
+        - Users should be able to view detailed information about each apartment, including photos, descriptions, and contact information for the landlord
         - delete account.
         - Update account.
 
