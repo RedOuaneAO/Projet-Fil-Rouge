@@ -29,3 +29,14 @@
 /* -------end of search bar */
 
 
+/* -------Apartment Details */
+.apartment-details{
+    padding:0 12%; 
+}
+.apartment-title{
+    margin-top:50px;
+}
+.apartment-title h2{
+    font-weight: 600;
+}
+

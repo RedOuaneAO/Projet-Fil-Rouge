@@ -75,16 +75,18 @@
         <section id="Apartment" class="" style=" background-color:white;">
             <h2 class="d-flex justify-content-center p-5">Recent<span class="text-danger ms-2">Apartment</span></h2>
             <div class="d-flex justify-content-evenly flex-wrap">
-                <div class=" mb-4">
-                  <div class="card border-0" style="width: 18rem;">
-                    <img src="./img/img1.jpg" class="card-img-top rounded" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title fw-bold">Card title</h5>
-                      <p class="card-text text-secondary">Some quick example text</p>
-                      <p class="card-text text-secondary">Marrakech</p>
-                      <p><span class="fw-bold me-2">1200DH</span>par nuit</p>
-                    </div>
-                  </div>
+                <a href="{{route('apartmentDetails')}}" class="text-decoration-none">
+                    <div class=" mb-4">
+                      <div class="card border-0" style="width: 18rem;">
+                        <img src="./img/img1.jpg" class="card-img-top rounded" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title fw-bold">Card title</h5>
+                          <p class="card-text text-secondary">Some quick example text</p>
+                          <p class="card-text text-secondary">Marrakech</p>
+                          <p><span class="fw-bold me-2">1200DH</span>par nuit</p>
+                        </div>
+                      </div>
+                </a>
                 </div>
                 <div class=" mb-4">
                   <div class="card border-0" style="width: 18rem;">
@@ -191,7 +193,7 @@
                 <img src="./img/paypal.png" width="100" alt="">
                 <img src="./img/payonner.png" width="100" alt="">
                 <img src="./img/visa.png" width="100" alt="">
-                <img src="./img/visa.png" width="100" alt="">
+                <img src="./img/master.png" width="100" alt="">
             </div>
         </section>
         <section id="Contact"  class="bg-dark bg-opacity-50 container-fluid">
