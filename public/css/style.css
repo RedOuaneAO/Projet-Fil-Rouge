@@ -1,0 +1,31 @@
+ *{
+    margin: 0;
+    box-sizing: border-box;
+    font-family: geometric sans serif;
+}
+/* ---------search bar --------- */
+.search-bar{
+    width: 800px;
+    margin: 30px auto;
+    padding: 6px 10px 6px 30px;
+    border-radius: 50px;
+}
+.search-bar form input{
+    display: block;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+.search-bar form button{
+    color: #fff;
+    width: 45px;
+    height: 45px;
+}
+
+.search-bar form button img{
+    width: 15px;
+    margin-top:7px;
+}
+/* -------end of search bar */
+
+
