@@ -1,7 +1,8 @@
- *{
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+*{
     margin: 0;
     box-sizing: border-box;
-    font-family: geometric sans serif;
+    font-family: 'Oswald', sans-serif;
 }
 /* ---------search bar --------- */
 .search-bar{
@@ -31,7 +32,7 @@
 
 /* -------Apartment Details */
 .apartment-details{
-    padding:0 12%; 
+    padding:0 8%; 
 }
 .apartment-title{
     margin-top:50px;
