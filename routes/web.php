@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,6 @@ Route::get('/index', function () {
 Route::get('/apartmentDetails', function () {
     return view('apartmentDetails');
 })->name('apartmentDetails');
+
+
+Route::post('/register', [AuthController::class , 'register'])->name('regi');

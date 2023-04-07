@@ -42,7 +42,7 @@
                     <p class="text-white" style="font-size:60px;">Get your Rental Apartment</p>
                 </div>
                 <div class="container">
-                    <div class="search-bar bg-white">
+                    <div class="search-bar shadow bg-white">
                         <form action="" class="d-flex align-items-center justify-content-between flex-wrap">
                             <div class="location-input">
                                 <label for="" class="fw-bold" >Location</label>
