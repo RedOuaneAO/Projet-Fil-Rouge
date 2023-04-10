@@ -24,12 +24,15 @@
                         <a class="nav-link text-white" href="#About">About</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link text-white" href="{{route('profile')}}">Profile</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link text-white" href="#Contact">Contact</a>
                     </li>
                     <li class="nav-item dropdown dropstart ">
                         <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="bi bi-list text-white"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Login</a></li>
+                            <li><a class="dropdown-item" href="{{route('adminDash')}}">Login</a></li>
                             <li><a class="dropdown-item" href="{{route('register')}}">Sign Up</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">Logout</a></li>
@@ -76,7 +79,7 @@
             <h2 class="d-flex justify-content-center p-5">Recent<span class="text-danger ms-2">Apartment</span></h2>
             <div class="d-flex justify-content-evenly flex-wrap">
                 <a href="{{route('apartmentDetails')}}" class="text-decoration-none">
-                    <div class=" mb-4">
+                    <div class=" mb-4 cardd">
                       <div class="card border-0" style="width: 18rem;">
                         <img src="./img/img1.jpg" class="card-img-top rounded" alt="...">
                         <div class="card-body">
@@ -86,9 +89,9 @@
                           <p><span class="fw-bold me-2">1200DH</span>par nuit</p>
                         </div>
                       </div>
+                    </div>
                 </a>
-                </div>
-                <div class=" mb-4">
+                <div class=" mb-4 cardd">
                   <div class="card border-0" style="width: 18rem;">
                     <img src="./img/img2.jpg" class="card-img-top rounded" alt="...">
                     <div class="card-body">
@@ -99,7 +102,7 @@
                     </div>
                   </div>
                 </div>
-                <div class=" mb-4">
+                <div class=" mb-4 cardd">
                   <div class="card border-0" style="width: 18rem;">
                     <img src="./img/img3.jpg" class="card-img-top rounded" alt="...">
                     <div class="card-body">
@@ -110,7 +113,7 @@
                     </div>
                   </div>
                 </div>
-                <div class=" mb-4">
+                <div class=" mb-4 cardd">
                   <div class="card border-0" style="width: 18rem;">
                     <img src="./img/img1.jpg" class="card-img-top rounded" alt="...">
                     <div class="card-body">
@@ -121,7 +124,7 @@
                     </div>
                   </div>
                 </div>
-                <div class=" mb-4">
+                <div class=" mb-4 cardd">
                   <div class="card border-0" style="width: 18rem;">
                     <img src="./img/img2.jpg" class="card-img-top rounded" alt="...">
                     <div class="card-body">
@@ -132,7 +135,7 @@
                     </div>
                   </div>
                 </div>
-                <div class=" mb-4">
+                <div class=" mb-4 cardd">
                   <div class="card border-0" style="width: 18rem;">
                     <img src="./img/img3.jpg" class="card-img-top rounded" alt="...">
                     <div class="card-body">
@@ -144,7 +147,6 @@
                   </div>
                 </div>
               </div>
-              
         </section>
         <section id="imgs" class="container-fluid bg-white">
             <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -211,5 +213,16 @@
         </section>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+    <script> 
+    let card =document.querySelectorAll('.cardd');
+    card.forEach(function(element) {
+        element.addEventListener("mouseover", function() {
+            this.classList.add("shadow");
+        });
+        element.addEventListener("mouseout", function() {
+            this.classList.remove("shadow");
+        });
+    });
+    </script>
     </body>
 </html>

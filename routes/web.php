@@ -32,6 +32,9 @@ Route::get('/index', function () {
 Route::get('/apartmentDetails', function () {
     return view('apartmentDetails');
 })->name('apartmentDetails');
+Route::get('/profile', function () {
+    return view('profile');
+})->name('profile');
 
 
 Route::post('/register', [AuthController::class , 'register'])->name('regi');
