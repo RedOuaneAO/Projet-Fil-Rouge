@@ -20,6 +20,9 @@ Route::get('/', function () {
 Route::get('/register', function () {
     return view('register');
 })->name('register');
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
 Route::get('/adminDash', function () {
     return view('adminDash');
 })->name('adminDash');
@@ -38,3 +41,4 @@ Route::get('/profile', function () {
 
 
 Route::post('/register', [AuthController::class , 'register'])->name('regi');
+Route::post('/login', [AuthController::class , 'login'])->name('logi');

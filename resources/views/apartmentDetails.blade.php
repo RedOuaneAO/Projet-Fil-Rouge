@@ -54,12 +54,12 @@
                 </div>
             </div>
             <div class="gallery row">
-                <div class="col-6"><img src="./img/img1.jpg" alt="" class="rounded" width="100%"></div>
+                <div class="col-6"><img src="./img/img1.jpg" alt="" class="rounded shadow" width="100%"></div>
                 <div class="col-6 row">
-                    <div class="col-6"><img src="./img/img2.jpg" alt="" class="rounded"  width="100%"></div>
-                    <div class="col-6"><img src="./img/img3.jpg" alt="" class="rounded"  width="100%"></div>
-                    <div class="col-6 mt-auto"><img src="./img/img4.jpg" alt="" class="rounded"  width="100%"></div>
-                    <div class="col-6 mt-auto"><img src="./img/img1.jpg" alt="" class="rounded"  width="100%"></div>
+                    <div class="col-6"><img src="./img/img2.jpg" alt="" class="rounded shadow"  width="100%"></div>
+                    <div class="col-6"><img src="./img/img3.jpg" alt="" class="rounded shadow"  width="100%"></div>
+                    <div class="col-6 mt-auto"><img src="./img/img4.jpg" alt="" class="rounded shadow"  width="100%"></div>
+                    <div class="col-6 mt-auto"><img src="./img/img1.jpg" alt="" class="rounded shadow"  width="100%"></div>
                 </div>
             </div>
             <div class="d-flex mt-5 justify-content-between" style="width: 60%">

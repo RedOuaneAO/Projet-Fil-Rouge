@@ -44,7 +44,7 @@
                 <div class="d-flex justify-content-center align-items-center">
                     <p class="text-white" style="font-size:60px;">Get your Rental Apartment</p>
                 </div>
-                <div class="container">
+                {{-- <div class="container">
                     <div class="search-bar shadow bg-white">
                         <form action="" class="d-flex align-items-center justify-content-between flex-wrap">
                             <div class="location-input">
@@ -61,7 +61,6 @@
                             </div>
                             <div class="d-block">
                                 <label for="" class="fw-bold">Guest</label>
-                                {{-- <input type="text" placeholder="Guest"> --}}
                                 <select name="" id="" class="border-0">
                                     <option value="">Guest 1</option>
                                     <option value="">Guest 2</option>
@@ -71,6 +70,10 @@
                             <button type="submit" class="bg-danger rounded-circle border-0"><i class="bi bi-search"></i></button>
                         </form>
                     </div>
+                </div> --}}
+                <div class="d-flex justify-content-center ">
+                    <button class="btn btn-danger">Login</button>
+                    <a href="{{route('register')}}" class="btn border-danger text-danger ms-3">Register</a>
                 </div>
             </div>
             </div>
