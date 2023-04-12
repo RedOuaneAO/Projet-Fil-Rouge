@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -43,13 +44,9 @@ class AuthController extends Controller
         }
         return redirect('/apartmentsList');
         // $user = Auth::user();
-        // return response()->json([
-        //     'status' => 'success',
-        //     'user' => $user,
-        //     'authorisation' => [
-        //         'token' => $token,
-        //         'type' => 'bearer',
-        //     ]
-        // ]);
+    }
+    public function get(){
+        $variable = DB::table('cities')->get();
+        return view('index' , compact('variable'));
     }
 }
