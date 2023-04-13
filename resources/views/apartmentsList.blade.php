@@ -12,7 +12,7 @@
 <body>
     <div class="container-fluid">
         <div class="row flex-nowrap">
-            <div class="col-auto col-xl-2 px-sm-2 px-0 shadow">
+            <div class="col-auto col-xl-2 px-sm-2 px-0 shadow" style="height: 100vh">
                 <div class="d-flex flex-column  px-3 pt-2">
                     <a href="#" class="pb-3 mb-md-0 text-decoration-none text-dark fs-5 d-none d-sm-inline">Rent
                         <span class="text-danger">It</span>
@@ -69,7 +69,7 @@
 
                 {{-- -------------------------------content --------------------------------------}}
 
-            <div class="col py-3">
+            <div class="col py-3 overflow-x-hidden overflow-y-scroll" style="height: 100vh">
                 <div class="mx-auto" style="width: 80%">
                     <div class="mb-3">
                         <input type="text" class="form-control" placeholder="Search">
@@ -90,7 +90,7 @@
                     @foreach ($Apartments as $apartment)
                     <div class=" mb-4 cardd">
                         <div class="card border-0" style="width: 17rem;">
-                          <img src="./img/img2.jpg" class="card-img-top rounded" alt="...">
+                          <img src="./img/{{$apartment->images[0]->image}}" class="card-img-top rounded" alt="...">
                           <div class="card-body">
                             <h5 class="card-title fw-bold">{{$apartment->title}}</h5>
                             <p class="card-text text-secondary">{{$apartment->roomsNumber}}</p>
@@ -99,8 +99,9 @@
                           </div>
                         </div>
                       </div>
-                    @endforeach
-
+                    @endforeach                    
+                </div>
+            </div>
         </div>
     </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>

@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Image;
 use App\Models\Apartment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ApartmentController extends Controller
 {
-    //
 
     public function displayAprtment(){
-        $Apartments = Apartment::get();
-        $images = DB::table('images')->get();
-        return $images;
+        $Apartments = Apartment::with('images')->get();
         return view('apartmentsList' , compact('Apartments'));
     }
     public function store(Request $Request){
@@ -30,13 +28,10 @@ class ApartmentController extends Controller
         foreach ($images as $image) {
             $filename = $image->getClientOriginalName();
             $image->move(public_path('img'), $filename);
-            DB::table('images')->insert([
+            Image::create([
                 'image'=>$filename,
                 'apartment_id'=>$apartment->id
             ]);
         }
-        return response()->json([
-            'status' => 'success',
-        ]);
-    }
+        return redirect('/apartmentsList');    }
 }

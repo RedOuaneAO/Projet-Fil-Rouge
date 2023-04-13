@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('apartment_id');
             $table->string('image');
+            $table->timestamps();
         });
     }
 
@@ -27,7 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
         Schema::dropIfExists('images');
 
     }

@@ -35,10 +35,10 @@
                                 <input type="text" name="title" class="form-control">
                             </div>
                             <div class="col-md-6">
-                                <label>Images</label>
-                                <input type="file" name="image[]" class="form-control">
-                                <input type="file" name="image[]" class="form-control">
-                                <input type="file" name="image[]" class="form-control">
+                                <label>Address</label><input type="text" name="address" class="form-control" placeholder="Inter the apartment Address">
+                            </div>
+                            <div class="col-md-6">
+                                <label>Price</label><input type="number" name="price" class="form-control">
                             </div>
                             <div class="col-md-6">
                                 <label>Location</label>
@@ -51,9 +51,8 @@
                             </div>
                         </div>
                         <div class="row mt-3">
-                            <div class="col-md-12"><label>Address</label><input type="text" name="address" class="form-control" placeholder="Inter the apartment Address"></div>
-                            <div class="col-md-12"><label>Price</label><input type="number" name="price" class="form-control"></div>
                             <div class="col-md-12"><label>Number of the rooms</label><input type="number" name="roomsNumber" class="form-control"></div>
+                            <div class="col-md-12"> <label>Images</label><input type="file" name="image[]" class="form-control" multiple></div>
                         </div>
                         <div class="mt-5 text-center">
                             <button class="btn btn-primary" type="submit" type="button">Add</button>
