@@ -12,7 +12,12 @@ class ApartmentController extends Controller
 
     public function displayAprtment(){
         $Apartments = Apartment::with('images')->get();
-        return view('apartmentsList' , compact('Apartments'));
+        if ($Apartments->count() === 0) {
+            $message = 'No apartments found.';
+            return view('apartmentsList', compact('message'));
+        } else {
+            return view('apartmentsList', compact('Apartments'));
+        }
     }
     public function store(Request $Request){
         $apartment= Apartment::create([

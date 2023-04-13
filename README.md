@@ -12,13 +12,13 @@
         - delete owners and users accounts
         - view available apartments for rent or sale and their owner
 
-    - **owner**
+    - **user**
         - Landlord should be able to create a account.
         - Landlord should be able to add , update, delete their available apartments for rent or sale.
         - Landlord should be able to delete their account.
         - Landlord should be able to Update their account.
 
-    - **user**
+    - **visitor**
         - user should be able to create a profile.
         - User should be able to search for apartments using various criteria, such as location, price range, number of bedrooms, etc.
         - User should be able to view detailed information about each apartment, including photos, descriptions, and contact information for the landlord

@@ -28,7 +28,7 @@
                         <li class="nav-item">
                             <a href="#" class="nav-link px-0 text-danger">
                                 <i class="bi bi-house"></i>
-                                <span class="ms-1 d-none d-sm-inline">Home</span>
+                                <span class="ms-1 d-none d-sm-inline">Apartments</span>
                             </a>
                         </li>
                         <li>
@@ -54,7 +54,7 @@
                                 <span class="ms-1 d-none d-sm-inline">Favorite</span> </a>
                         </li>
                         <li>
-                            <a href="#" class="nav-link px-0 text-danger">
+                            <a href="{{route('myApartment')}}" class="nav-link px-0 text-danger">
                                 <i class="bi bi-house-door"></i>
                                 <span class="ms-1 d-none d-sm-inline">My apartments</span> </a>
                         </li>
@@ -86,20 +86,50 @@
                     </div>
                     
                 </div>
-                <div class="d-flex justify-content-evenly  flex-wrap mt-4">
-                    @foreach ($Apartments as $apartment)
-                    <div class=" mb-4 cardd">
-                        <div class="card border-0" style="width: 17rem;">
-                          <img src="./img/{{$apartment->images[0]->image}}" class="card-img-top rounded" alt="...">
-                          <div class="card-body">
-                            <h5 class="card-title fw-bold">{{$apartment->title}}</h5>
-                            <p class="card-text text-secondary">{{$apartment->roomsNumber}}</p>
-                            <p class="card-text text-secondary">{{$apartment->address}}</p>
-                            <p><span class="fw-bold me-2">{{$apartment->price}}</span>par nuit</p>
-                          </div>
-                        </div>
-                      </div>
-                    @endforeach                    
+                @php
+                    $counter =0;
+                @endphp
+                <div class=" mt-4 d-flex justify-content-evenly flex-wrap">
+                    @if(isset($message))
+                        <p>{{ $message }}</p>
+                    @else
+                        @foreach ($Apartments as $apartment)
+                            <a href="/apartmentDetails/{{$apartment->id}}" class="text-decoration-none">
+                                <div class=" mb-4 shadow rounded">
+                                    <div class="card" style="width: 17rem;">
+                                        <div id="{{'swipe'.$counter}}" class="carousel slide" data-bs-ride="carousel">
+                                            <div class="carousel-inner">
+                                                @foreach ($apartment->images as $image)
+                                                    <div class="carousel-item active">
+                                                        <img src="./img/{{$image->image}}"  class="card-img-top" alt="">
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                            <button class="carousel-control-prev" type="button" data-bs-target="{{'#swipe'.$counter}}" data-bs-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Previous</span>
+                                            </button>
+                                            <button class="carousel-control-next" type="button" data-bs-target="{{'#swipe'.$counter}}" data-bs-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Next</span>
+                                            </button>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title fw-bold"  style="font-size: 18px;">{{ $apartment->title }}</h5>
+                                            <div class="d-flex flex-column">
+                                                <p class="card-text text-secondary mb-0">{{ $apartment->roomsNumber }}</p>
+                                                <p class="card-text text-secondary my-2">{{ $apartment->address }}</p>
+                                                <p><span class="fw-bold me-2">{{ $apartment->price }} DH</span>par nuit</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @php
+                                    $counter++;
+                                @endphp
+                            </a>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>

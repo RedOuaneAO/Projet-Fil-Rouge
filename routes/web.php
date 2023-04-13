@@ -27,15 +27,18 @@ Route::get('/login', function () {
 Route::get('/adminDash', function () {
     return view('adminDash');
 })->name('adminDash');
-Route::get('/apartmentsList', function () {
-    return view('apartmentsList');
-})->name('apartmentsList');
+// Route::get('/apartmentsList', function () {
+//     return view('apartmentsList');
+// })->name('apartmentsList');
 Route::get('/apartmentDetails', function () {
     return view('apartmentDetails');
 })->name('apartmentDetails');
 Route::get('/profile', function () {
     return view('profile');
 })->name('profile');
+Route::get('/myApartment', function () {
+    return view('myApartment');
+})->name('myApartment');
 
 
 Route::post('/register', [AuthController::class , 'register'])->name('regi');
