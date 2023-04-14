@@ -106,17 +106,18 @@
                                             <input type="text" name="title" class="form-control">
                                         </div>
                                         <div class="col-md-6">
-                                            <label>Address</label><input type="text" name="address" class="form-control" placeholder="Inter the apartment Address">
+                                            <label>Address</label>
+                                            <input type="text" class="form-control" placeholder="Inter the apartment Address">
                                         </div>
                                         <div class="col-md-6">
                                             <label>Price</label><input type="number" name="price" class="form-control">
                                         </div>
                                         <div class="col-md-6">
-                                            <label>Location</label>
-                                            <select class="form-select">
+                                            <label>City</label>
+                                            <select class="form-select" name="address">
                                                 <option value="" disabled selected>Select</option>
                                                 @foreach($variable as $var)
-                                                <option value="" name="">{{$var->city}}</option>
+                                                <option value="{{$var->city}}">{{$var->city}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

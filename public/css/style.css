@@ -42,3 +42,12 @@
     font-weight: 600;
 }
 
+/*-------- filterButton */
+
+.filter_button{
+    color:#DC3545;
+}
+.filter_button:hover{
+    background-color: #DC3545;
+    color:#fff;
+}

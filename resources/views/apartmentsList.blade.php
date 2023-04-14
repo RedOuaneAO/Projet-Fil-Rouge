@@ -70,21 +70,32 @@
                 {{-- -------------------------------content --------------------------------------}}
 
             <div class="col py-3 overflow-x-hidden overflow-y-scroll" style="height: 100vh">
-                <div class="mx-auto" style="width: 80%">
+                <div class="mx-auto sticky-top bg-white bg-opacity-75 p-3 rounded" style="width: 60%">
                     <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input type="text" class="form-control border-secondary" placeholder="Search">
                     </div>
                     <div class="">
-                        <button class="btn btn-danger form-control" type="button" data-bs-toggle="collapse" data-bs-target="#Filter" aria-expanded="false" aria-controls="collapseExample">
-                            Filter
+                        <button class="btn btn-danger form-control" type="button" data-bs-toggle="collapse" data-bs-target="#Filter">
+                            Filter By Price
                         </button>
-                        <div class="collapse" id="Filter">
+                        <div class="collapse border-secondary" id="Filter">
                             <div class="card card-body">
-                                
+                                    <form class="row">
+                                        <div class="col-12">
+                                            <label for="price-from" class="fw-bold">Price from:</label>
+                                            <input type="number" class="form-control" id="price-from" placeholder="Enter minimum price">
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="price-to" class="fw-bold">Price to:</label>
+                                            <input type="number" class="form-control" id="price-to" placeholder="Enter maximum price">
+                                        </div>
+                                        <div class="d-flex justify-content-center mt-2 col-12">
+                                            <button type="button" class="btn border-danger  filter_button" onclick="filterByPrice()"><i class="bi bi-funnel"></i> Filter</button>
+                                        </div>
+                                    </form>
                             </div>
                         </div>
                     </div>
-                    
                 </div>
                 @php
                     $counter =0;
@@ -97,7 +108,7 @@
                             <a href="/apartmentDetails/{{$apartment->id}}" class="text-decoration-none">
                                 <div class=" mb-4 shadow rounded">
                                     <div class="card" style="width: 17rem;">
-                                        <div id="{{'swipe'.$counter}}" class="carousel slide" data-bs-ride="carousel">
+                                        <div id="{{'swipe'.$counter}}" class="carousel slide">  {{--data-bs-ride="carousel"--}}
                                             <div class="carousel-inner">
                                                 @foreach ($apartment->images as $image)
                                                     <div class="carousel-item active">
@@ -107,11 +118,11 @@
                                             </div>
                                             <button class="carousel-control-prev" type="button" data-bs-target="{{'#swipe'.$counter}}" data-bs-slide="prev">
                                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                <span class="visually-hidden">Previous</span>
+                                                {{-- <span class="visually-hidden">Previous</span> --}}
                                             </button>
                                             <button class="carousel-control-next" type="button" data-bs-target="{{'#swipe'.$counter}}" data-bs-slide="next">
                                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                <span class="visually-hidden">Next</span>
+                                                {{-- <span class="visually-hidden">Next</span> --}}
                                             </button>
                                         </div>
                                         <div class="card-body">
