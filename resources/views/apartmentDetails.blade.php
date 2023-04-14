@@ -10,7 +10,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div style="height:100vh" class="container-fluid">
+    <div style="height:100vh" class="">
         <div class="justify-content-between d-flex p-3">
             <h4 class="text-danger"><span class="text-black">Rent</span>It</h4>
             <ul class="nav">
@@ -37,10 +37,10 @@
                 </li>
             </ul>
         </div>
-        <div class="apartment-details">
-            <div class="apartmen-title">
-                <h2>Marrakech apartment</h2>
+        <div class="apartment-details container">
+            <div class="apartmen-title d-flex justify-content-between">
                 <div class="">
+                    <h2>{{$apartDetails[0]->title}}</h2>
                     <div class="">
                         <i class="bi bi-star-fill text-danger"></i>
                         <i class="bi bi-star-fill text-danger"></i>
@@ -48,26 +48,41 @@
                         <i class="bi bi-star-half text-danger"></i>
                         <span>189 Review</span>
                     </div>
-                    <div>
-                        <p><span class="fw-bold">Location :</span> Marrakech</p>
+                    <div >
+                        <p><span class="fw-bold">Location :</span>{{$apartDetails[0]->address}}</p>
                     </div>
                 </div>
+                <div class="align-self-end d-flex">
+                    <h5 class="fw-bold me-3">{{$apartDetails[0]->price}}<span class="text-secondary"> $</span></h5>
+                    <button class="btn text-white bg-danger"><i class="bi bi-heart"></i> Add To Favorit</button>
+                </div>
             </div>
-            <div class="gallery row">
-                <div class="col-6"><img src="./img/img1.jpg" alt="" class="rounded shadow" width="100%"></div>
-                <div class="col-6 row">
-                    <div class="col-6"><img src="./img/img2.jpg" alt="" class="rounded shadow"  width="100%"></div>
-                    <div class="col-6"><img src="./img/img3.jpg" alt="" class="rounded shadow"  width="100%"></div>
-                    <div class="col-6 mt-auto"><img src="./img/img4.jpg" alt="" class="rounded shadow"  width="100%"></div>
-                    <div class="col-6 mt-auto"><img src="./img/img1.jpg" alt="" class="rounded shadow"  width="100%"></div>
+            <div class="d-md-flex mt-3">
+                <div class="w-100">
+                    <img src="/img/{{$apartDetails[0]->images[0]->image}}"  class="rounded shadow" width="100%">
+                </div>
+                <div class="w-100 d-flex flex-wrap mt-2 mt-md-0 ps-md-2">
+                    <div class="w-50 pe-1 pb-1">
+                        <img src="/img/{{$apartDetails[0]->images[1]->image}}"  class="rounded shadow"  width="100%">
+                    </div>
+                    <div class="w-50 ps-1 pb-1">
+                        <img src="/img/{{$apartDetails[0]->images[2]->image}}"  class="rounded shadow"  width="100%">
+                    </div>
+                    <div class="w-50 pe-1 pt-1">
+                        <img src="/img/{{$apartDetails[0]->images[3]->image}}"  class="rounded shadow"  width="100%">
+                    </div>
+                    <div class="w-50 ps-1 pt-1">
+                        <img src="/img/{{$apartDetails[0]->images[4]->image}}"  class="rounded shadow"  width="100%">
+                    </div>
                 </div>
             </div>
             <div class="d-flex mt-5 justify-content-between" style="width: 60%">
                 <div class=""><h4 class="fw-bold">perfect apartment in marrakech</h4></div>
-                <div class=""><img src="./img/face.jpg" width="50" class="rounded-circle" alt=""></div>
+                <div class=""><img src="/img/face.jpg" width="50" class="rounded-circle" alt=""></div>
             </div>
             <div>
-                <p>10 travelers. 5 bedrooms. 8 beds. 5,5 bathrooms</p>
+                {{-- <p>10 travelers. 5 bedrooms. 8 beds. 5,5 bathrooms</p> --}}
+                <p class="fw-bold">{{$apartDetails[0]->roomsNumber}}<span class="text-secondary"> Rooms</span></p>
             </div>
             <hr style="width: 60%">
             <div>
@@ -97,10 +112,10 @@
                 <h5 class="fw-bold">Comments</h5>
 {{-- dispaly comment --}}
                 <div class="row gap-5">
-                    <div class="card mt-sm-3 shadow rounded col-sm-5 col-12">
+                    <div class="card mt-sm-3 shadow rounded col-md-5 col-12">
                         <div class="card-body">
                             <div class="d-flex">
-                                <img class="rounded-circle" width="50" height="50" src="./img/face.jpg" alt="User avatar">
+                                <img class="rounded-circle" width="50" height="50" src="/img/face.jpg" alt="User avatar">
                                 <div class="ms-3">
                                     <h6 class="fw-bold">User Name</h6>
                                     <p class="text-secondary">août 2019</p>
@@ -109,10 +124,10 @@
                             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus laboriosam eligendi odit quod, quis recusandae. Ratione veritatis quibusdam voluptatibus facere?</p>
                         </div>
                     </div>
-                    <div class="card mt-sm-3 shadow rounded col-sm-5 col-12">
+                    <div class="card mt-sm-3 shadow rounded col-md-5 col-12">
                         <div class="card-body">
                             <div class="d-flex">
-                                <img class="rounded-circle" width="50" height="50" src="./img/face.jpg" alt="User avatar">
+                                <img class="rounded-circle" width="50" height="50" src="/img/face.jpg" alt="User avatar">
                                 <div class="ms-3">
                                     <h6 class="fw-bold">User Name</h6>
                                     <p class="text-secondary">août 2019</p>
@@ -121,10 +136,10 @@
                             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus laboriosam eligendi odit quod, quis recusandae. Ratione veritatis quibusdam voluptatibus facere?</p>
                         </div>
                     </div>
-                    <div class="card mt-sm-3 shadow rounded col-sm-5 col-12">
+                    <div class="card mt-sm-3 shadow rounded col-md-5 col-12">
                         <div class="card-body">
                             <div class="d-flex">
-                                <img class="rounded-circle" width="50" height="50" src="./img/face.jpg" alt="User avatar">
+                                <img class="rounded-circle" width="50" height="50" src="/img/face.jpg" alt="User avatar">
                                 <div class="ms-3">
                                     <h6 class="fw-bold">User Name</h6>
                                     <p class="text-secondary">août 2019</p>
@@ -133,10 +148,10 @@
                             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus laboriosam eligendi odit quod, quis recusandae. Ratione veritatis quibusdam voluptatibus facere?</p>
                         </div>
                     </div>
-                    <div class="card mt-sm-3 shadow rounded col-sm-5 col-12">
+                    <div class="card mt-sm-3 shadow rounded col-md-5 col-12">
                         <div class="card-body">
                             <div class="d-flex">
-                                <img class="rounded-circle" width="50" height="50" src="./img/face.jpg" alt="User avatar">
+                                <img class="rounded-circle" width="50" height="50" src="/img/face.jpg" alt="User avatar">
                                 <div class="ms-3">
                                     <h6 class="fw-bold">User Name</h6>
                                     <p class="text-secondary">août 2019</p>
@@ -171,7 +186,7 @@
                 <div class="card mt-4 shadow-lg border-0" style="height: 70% ;">
                     <div class="card-body">
                         <div class="d-flex">
-                            <img class="rounded-circle" width="50" height="50" src="./img/face1.jpg" alt="User avatar">
+                            <img class="rounded-circle" width="50" height="50" src="/img/face1.jpg" alt="User avatar">
                             <div class="ms-3">
                                 <h6 class="fw-bold">Owner Name</h6>
                                 <p class="text-secondary"></p>

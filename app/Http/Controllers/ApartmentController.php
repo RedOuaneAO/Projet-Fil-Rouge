@@ -38,5 +38,16 @@ class ApartmentController extends Controller
                 'apartment_id'=>$apartment->id
             ]);
         }
-        return redirect('/apartmentsList');    }
+        return redirect('/apartmentsList');    
+    }
+    
+    public function displayAprtmentDetails($id){
+        $apartDetails= Apartment::where('id',$id)->with('images')->get();
+        // return $apartDetails[0]->images[0]->image;
+        // return $apartDetails;
+        return view('/apartmentDetails', compact('apartDetails'));
+
+    }
 }
+
+

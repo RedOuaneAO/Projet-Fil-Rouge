@@ -200,8 +200,40 @@
                                             </div>
                                             <!-- Card Body -->
                                             <div class="card-body">
-                                                <div class="chart-area">
+                                                {{-- <div class="chart-area">
                                                     <canvas id="myAreaChart"></canvas>
+                                                </div> --}}
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped border">
+                                                        <thead class="bg-secondary bg-opacity-25">
+                                                            <tr>
+                                                                <th scope="col">First</th>
+                                                                <th scope="col">Last</th>
+                                                                <th scope="col">Handle</th>
+                                                                <th scope="col">Handle</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Mark</td>
+                                                                <td>Otto</td>
+                                                                <td>@mdo</td>
+                                                                <td>@mdo</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Jacob</td>
+                                                                <td>Thornton</td>
+                                                                <td>@fat</td>
+                                                                <td>@fat</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Larry the Bird</td>
+                                                                <td>Larry the Bird</td>
+                                                                <td>@twitter</td>
+                                                                <td>@twitter</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </div>
                                         </div>
@@ -219,28 +251,14 @@
                                                 <div class="chart-pie pt-4 pb-2">
                                                     <canvas id="myPieChart"></canvas>
                                                 </div>
-                                                <div class="mt-4 text-center small">
-                                                    <span class="mr-2">
-                                                        <i class="fas fa-circle text-primary"></i> Direct
-                                                    </span>
-                                                    <span class="mr-2">
-                                                        <i class="fas fa-circle text-success"></i> Social
-                                                    </span>
-                                                    <span class="mr-2">
-                                                        <i class="fas fa-circle text-info"></i> Referral
-                                                    </span>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                                 <!-- Content Row -->
                                 <div class="row">
-
                                     <!-- Content Column -->
                                     <div class="col-lg-6 mb-4">
-
                                         <!-- Project Card Example -->
                                         <div class="card shadow mb-4">
                                             <div class="card-header py-3">
@@ -300,7 +318,6 @@
                                                     unDraw &rarr;</a>
                                             </div>
                                         </div>
-
                                         <!-- Approach -->
                                         <div class="card shadow mb-4">
                                             <div class="card-header py-3">
@@ -314,55 +331,24 @@
                                                     Bootstrap framework, especially the utility classes.</p>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
-
                             </div>
                             <!-- /.container-fluid -->
-
                         </div>
                         <!-- End of Main Content -->
-
                         <!-- Footer -->
-                        <footer class="sticky-footer bg-white">
+                        <footer class="sticky-footer  bg-white">
                             <div class="container my-auto">
                                 <div class="copyright text-center my-auto">
-                                    <span>Copyright &copy; Your Website 2021</span>
+                                    <span>Copyright &copy; RentIt 2023</span>
                                 </div>
                             </div>
                         </footer>
                         <!-- End of Footer -->
-
                     </div>
                     <!-- End of Content Wrapper -->
-
                 <!-- End of Page Wrapper -->
-
-                <!-- Scroll to Top Button-->
-                <a class="scroll-to-top rounded" href="#page-top">
-                    <i class="fas fa-angle-up"></i>
-                </a>
-
-                <!-- Logout Modal-->
-                <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                            <div class="modal-footer">
-                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                <a class="btn btn-primary" href="login.html">Logout</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

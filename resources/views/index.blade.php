@@ -143,9 +143,26 @@
                                     <input type="text" class="form-control">
                                 </div> <br>
                                 <div class="col-md-12">
-                                    <label>Additional Details</label>
-                                    <input type="text" class="form-control">
-                                </div>
+                                    <label>What this accommodation offers</label>
+                                    <div>
+                                        <div>
+                                            <input type="checkbox" class="me-2">
+                                            <span>Wifi</span>
+                                        </div>
+                                        <div>
+                                            <input type="checkbox" class="me-2">
+                                            <span>Pool</span>
+                                        </div>
+                                        <div>
+                                            <input type="checkbox" class="me-2">
+                                            <span>Free parking on site</span>
+                                        </div>
+                                        <div>
+                                            <input type="checkbox" class="me-2">
+                                            <span>air conditioner</span>
+                                        </div>
+                                    </div>
+                                </div> <br>
                             </div>
                         </div>
                     </div>

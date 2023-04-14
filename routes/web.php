@@ -30,9 +30,6 @@ Route::get('/adminDash', function () {
 // Route::get('/apartmentsList', function () {
 //     return view('apartmentsList');
 // })->name('apartmentsList');
-Route::get('/apartmentDetails', function () {
-    return view('apartmentDetails');
-})->name('apartmentDetails');
 Route::get('/profile', function () {
     return view('profile');
 })->name('profile');
@@ -40,6 +37,8 @@ Route::get('/myApartment', function () {
     return view('myApartment');
 })->name('myApartment');
 
+Route::get('/apartmentDetails/{id}', [ApartmentController::class , 'displayAprtmentDetails']);
+// Route::get('/apartmentDetails', function () {return view('apartmentDetails');})->name('apartmentDetails');
 
 Route::post('/register', [AuthController::class , 'register'])->name('regi');
 Route::post('/login', [AuthController::class , 'login'])->name('logi');
