@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ApartmentController;
 
 /*
@@ -27,9 +28,6 @@ Route::get('/login', function () {
 Route::get('/adminDash', function () {
     return view('adminDash');
 })->name('adminDash');
-// Route::get('/apartmentsList', function () {
-//     return view('apartmentsList');
-// })->name('apartmentsList');
 Route::get('/profile', function () {
     return view('profile');
 })->name('profile');
@@ -38,10 +36,11 @@ Route::get('/myApartment', function () {
 })->name('myApartment');
 
 Route::get('/apartmentDetails/{id}', [ApartmentController::class , 'displayAprtmentDetails']);
-// Route::get('/apartmentDetails', function () {return view('apartmentDetails');})->name('apartmentDetails');
 
 Route::post('/register', [AuthController::class , 'register'])->name('regi');
 Route::post('/login', [AuthController::class , 'login'])->name('logi');
 Route::get('/index', [AuthController::class , 'get'])->name('index');
 Route::post('/index', [ApartmentController::class , 'store'])->name('aprtmentStore');
 Route::get('/apartmentsList', [ApartmentController::class , 'displayAprtment'])->name('apartmentsListdisplay');
+// ------comment
+Route::post('/apartmentDetails/{id}', [CommentController::class , 'addComment']);

@@ -81,7 +81,7 @@
         <section id="Apartment" class="" style=" background-color:white;">
             <h2 class="d-flex justify-content-center p-5">Recent<span class="text-danger ms-2">Apartment</span></h2>
             <div class="d-flex justify-content-evenly flex-wrap">
-                <a href="{{route('apartmentDetails')}}" class="text-decoration-none">
+                <a href="" class="text-decoration-none">
                     <div class=" mb-4 cardd">
                       <div class="card border-0" style="width: 18rem;">
                         <img src="./img/img1.jpg" class="card-img-top rounded" alt="...">

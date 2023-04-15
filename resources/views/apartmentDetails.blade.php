@@ -110,67 +110,34 @@
             </div>
             <div class="mt-3">
                 <h5 class="fw-bold">Comments</h5>
-{{-- dispaly comment --}}
-                <div class="row gap-5">
-                    <div class="card mt-sm-3 shadow rounded col-md-5 col-12">
-                        <div class="card-body">
-                            <div class="d-flex">
-                                <img class="rounded-circle" width="50" height="50" src="/img/face.jpg" alt="User avatar">
-                                <div class="ms-3">
-                                    <h6 class="fw-bold">User Name</h6>
-                                    <p class="text-secondary">août 2019</p>
+                                                    {{-- dispaly comment --}}
+                <div class="row">
+                    @foreach($apartComments as $comment)
+                        <div class="card mt-sm-3 shadow rounded col-md-5 mx-auto col-12 mt-3 ">
+                            <div class="card-body ">
+                                <div class="d-flex">
+                                    <img class="rounded-circle" width="50" height="50" src="/img/face.jpg" alt="User avatar">
+                                    <div class="ms-3">
+                                        <h6 class="fw-bold">User Name</h6>
+                                        <p class="text-secondary">août 2019</p>
+                                    </div>
                                 </div>
+                                <p>{{$comment->comment}}</p>
                             </div>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus laboriosam eligendi odit quod, quis recusandae. Ratione veritatis quibusdam voluptatibus facere?</p>
                         </div>
-                    </div>
-                    <div class="card mt-sm-3 shadow rounded col-md-5 col-12">
-                        <div class="card-body">
-                            <div class="d-flex">
-                                <img class="rounded-circle" width="50" height="50" src="/img/face.jpg" alt="User avatar">
-                                <div class="ms-3">
-                                    <h6 class="fw-bold">User Name</h6>
-                                    <p class="text-secondary">août 2019</p>
-                                </div>
-                            </div>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus laboriosam eligendi odit quod, quis recusandae. Ratione veritatis quibusdam voluptatibus facere?</p>
-                        </div>
-                    </div>
-                    <div class="card mt-sm-3 shadow rounded col-md-5 col-12">
-                        <div class="card-body">
-                            <div class="d-flex">
-                                <img class="rounded-circle" width="50" height="50" src="/img/face.jpg" alt="User avatar">
-                                <div class="ms-3">
-                                    <h6 class="fw-bold">User Name</h6>
-                                    <p class="text-secondary">août 2019</p>
-                                </div>
-                            </div>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus laboriosam eligendi odit quod, quis recusandae. Ratione veritatis quibusdam voluptatibus facere?</p>
-                        </div>
-                    </div>
-                    <div class="card mt-sm-3 shadow rounded col-md-5 col-12">
-                        <div class="card-body">
-                            <div class="d-flex">
-                                <img class="rounded-circle" width="50" height="50" src="/img/face.jpg" alt="User avatar">
-                                <div class="ms-3">
-                                    <h6 class="fw-bold">User Name</h6>
-                                    <p class="text-secondary">août 2019</p>
-                                </div>
-                            </div>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus laboriosam eligendi odit quod, quis recusandae. Ratione veritatis quibusdam voluptatibus facere?</p>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
-{{-- Write comment --}}
+                                        {{-- Write comment --}}
                 <div class="">
                     <div class="card mt-3">
                         <div class="card-header bg-white fw-bold">
                             Leave us a comment
                         </div>
                         <div class="card-body">
-                            <form>
+                            <form method="POST" action="/apartmentDetails/{{$apartDetails[0]->id}}">
+                                @csrf
                                 <div class="form-group">
-                                    <textarea class="form-control" id="comment" placeholder="Write Your Comment Here" rows="5"></textarea>
+                                    <textarea class="form-control" id="comment" name="comment" placeholder="Write Your Comment Here" rows="5"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-primary mt-3">Submit</button>
                             </form>
