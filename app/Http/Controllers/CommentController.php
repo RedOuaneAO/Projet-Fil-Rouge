@@ -15,5 +15,6 @@ class CommentController extends Controller
             'user_id'=>1
         ]);
         return redirect('/apartmentDetails/'.$id);
+        // return back();
     }
 }

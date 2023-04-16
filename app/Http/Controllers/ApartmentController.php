@@ -50,7 +50,21 @@ class ApartmentController extends Controller
         return view('/apartmentDetails', compact('apartDetails' , 'apartComments'));
 
     }
-
+    public function addToFavorite($id){
+            $favorite = Favorite::where('apartment_id', $id)
+                        ->where('user_id', 1)
+                        ->first();
+            if ($favorite) {
+                $favorite->delete(); 
+                return back()->with('success','has been deleted from favorite');
+            } else {
+                Favorite::create([
+                    'apartment_id' => $id,
+                    'user_id' => 1
+                ]); 
+                return back()->with('success','has been added to favorite');
+            }
+    }
     public function favoriteApart($id){
         $Apartments = Apartment::whereHas('favorites', function ($query) use ($id) {$query->where('user_id', $id);})->with('images')->get();
         // return $apartments;

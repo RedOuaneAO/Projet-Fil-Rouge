@@ -54,9 +54,17 @@
                 </div>
                 <div class="align-self-end d-flex">
                     <h5 class="fw-bold me-3">{{$apartDetails[0]->price}}<span class="text-secondary"> $</span></h5>
-                    <button class="btn text-white bg-danger"><i class="bi bi-heart"></i> Add To Favorit</button>
+                    <form action="/favorite/{{$apartDetails[0]->id}}" method="POST" id="myForm">
+                        @csrf
+                        <button class="btn text-white bg-danger"><i class="bi bi-heart favoriteBtn"></i> Favorit</button>
+                    </form>
                 </div>
             </div>
+            @if ($message = Session::get('success')) 
+                <div class="alert alert-success d-flex mx-auto mt-2" id="myDiv" style="width: 95%;">
+                    <p class="m-0">{{ $message }}</p>
+                </div>
+            @endif
             <div class="d-md-flex mt-3">
                 <div class="w-100">
                     <img src="/img/{{$apartDetails[0]->images[0]->image}}"  class="rounded shadow" width="100%">
@@ -168,8 +176,15 @@
             </div>
         </div>
     </div>
-
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+<script>
+    // Get a reference to the div element
+    var div = document.getElementById('myDiv');
+    
+    // Hide the div after 5 seconds (5000 milliseconds)
+    setTimeout(function() {
+        div.style.display = 'none';
+    }, 5000);
+</script>
 </body>
 </html>

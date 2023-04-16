@@ -45,3 +45,4 @@ Route::get('/apartmentsList', [ApartmentController::class , 'displayAprtment'])-
 // ------apartment details
 Route::get('/apartmentDetails/{id}', [ApartmentController::class , 'displayAprtmentDetails'])->name('red');
 Route::post('/apartmentDetails/{id}', [CommentController::class , 'addComment']);
+Route::post('/favorite/{id}', [ApartmentController::class , 'addToFavorite']);
