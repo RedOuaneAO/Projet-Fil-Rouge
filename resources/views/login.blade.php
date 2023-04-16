@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"/>
+    <link rel="stylesheet" href="/css/style.css">
     <title>Home</title>
 </head>
 <body>
@@ -22,8 +23,8 @@
     @endif
     <section class="mt-5 d-flex justify-content-center" style="padding-inline: 6%">
         {{-- login --}}
-        <div class="row shadow rounded" style="width:95%;">
-            <div class="col-7 rounded-end " style="background-color: rgb(237, 236, 234)">
+        <div class="row shadow rounded" style="width:85%;">
+            <div class="col-12 col-sm-6 col-md-7 rounded-start px-3" style="background-color: rgb(237, 236, 234)">
                 <form action="{{route('logi')}}" method="POST">
                     @csrf
                     <h2 class="text-center my-3">Log<span class="text-danger">In</span></h2>
@@ -40,7 +41,7 @@
                     <a href="{{route('register')}}" class="m-2">I don't have account</a>
                 </form>
             </div>
-            <div class="col-5 rounded-start" style="background:url(./img/img2.jpg);background-size:cover;">
+            <div class="d-sm-inline col-sm-6 col-md-5 d-none rounded-end" style="background:url(./img/img2.jpg);background-size:cover;">
             </div>
         </div>
     </section>

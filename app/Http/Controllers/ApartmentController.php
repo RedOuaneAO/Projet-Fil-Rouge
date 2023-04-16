@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Image;
 use App\Models\Comment;
+use App\Models\Favorite;
 use App\Models\Apartment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -47,6 +48,13 @@ class ApartmentController extends Controller
         $apartComments=Comment::where('apartment_id',$id)->get();
         // return $apartDetails[0]->id;    
         return view('/apartmentDetails', compact('apartDetails' , 'apartComments'));
+
+    }
+
+    public function favoriteApart($id){
+        $Apartments = Apartment::whereHas('favorites', function ($query) use ($id) {$query->where('user_id', $id);})->with('images')->get();
+        // return $apartments;
+        return view('/myFavorite', compact('Apartments'));
 
     }
 }

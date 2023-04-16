@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"/>
+    <link rel="stylesheet" href="/css/style.css">
     <title>Home</title>
 </head>
 <body>
@@ -22,25 +23,29 @@
     @endif
     <section class="mt-5 d-flex justify-content-center" style="padding-inline: 6%">
         {{-- register --}}
-        <div class="row shadow rounded"  style="width:95%;">
-            <div class="col-5 rounded-start" style="background:url(./img/img1.jpg);background-size:cover;">
+        <div class="row shadow rounded"  style="width:85%;">
+            <div class="d-sm-inline col-sm-6 col-md-5 d-none rounded-start" style="background:url(./img/img1.jpg);background-size:cover;">
             </div>
-            <div class="col-7 rounded-end " style="background-color: rgb(237, 236, 234)">
+            <div class="col-12 col-sm-6 col-md-7 rounded-end px-3 " style="background-color: rgb(237, 236, 234)">
                 <form action="{{route('regi')}}" method="POST">
                     @csrf
                     <h2 class="text-center my-3">Sign<span class="text-danger">Up</span></h2>
                     <div class="">
-                        <label for="" class="fw-bold">Full name</label>
+                        <label  class="fw-bold">Full name</label>
                         <input type="text" name="name" class="form-control" placeholder="Full Name">
                     </div>
                     <div class="">
-                        <label for="" class="fw-bold">Email</label>
+                        <label  class="fw-bold">Email</label>
                         <input type="email" name="email" class="form-control" placeholder="Email">
                     </div>
                     <div class="">
-                        <label for="" class="fw-bold">Password</label>
+                        <label  class="fw-bold">Password</label>
                         <input type="password" name="password" class="form-control" placeholder="Password">
                     </div>
+                    {{-- <div class="">
+                        <label for="" class="fw-bold">comfiermPassword</label>
+                        <input type="password" name="password" class="form-control" placeholder="Password">
+                    </div> --}}
                     <button type="submit" class="btn btn-primary form-control my-3 fw-bold">Sign Up</button>
                     <button class="btn bg-white form-control mb-3 fw-bold"><i class="bi bi-google text-danger me-3"></i>Sign Up With Google</button>
                     <a href="{{route('login')}}" class="">I aleardy have account</a>

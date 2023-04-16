@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"/>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <title>Document</title>
 </head>
 <body>
@@ -49,12 +49,12 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="nav-link px-0 text-danger">
+                            <a href="/myFavorite/1" class="nav-link px-0 text-danger">
                                 <i class="bi bi-heart"></i>
                                 <span class="ms-1 d-none d-sm-inline">Favorite</span> </a>
                         </li>
                         <li>
-                            <a href="{{route('myApartment')}}" class="nav-link px-0 text-danger">
+                            <a href="#" class="nav-link px-0 text-danger">
                                 <i class="bi bi-house-door"></i>
                                 <span class="ms-1 d-none d-sm-inline">My apartments</span> </a>
                         </li>
