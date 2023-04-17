@@ -31,11 +31,6 @@ Route::get('/adminDash', function () {
 Route::get('/profile', function () {
     return view('profile');
 })->name('profile');
-// Route::get('/myApartment', function () {
-//     return view('myApartment');
-// })->name('myApartment');
-Route::get('/myFavorite/{id}',[ApartmentController::class , 'favoriteApart']);
-
 
 Route::post('/register', [AuthController::class , 'register'])->name('regi');
 Route::post('/login', [AuthController::class , 'login'])->name('logi');
@@ -43,6 +38,9 @@ Route::get('/index', [AuthController::class , 'get'])->name('index');
 Route::post('/index', [ApartmentController::class , 'store'])->name('aprtmentStore');
 Route::get('/apartmentsList', [ApartmentController::class , 'displayAprtment'])->name('apartmentsListdisplay');
 // ------apartment details
+Route::get('/myFavorite/{id}',[ApartmentController::class , 'favoriteApart']);
 Route::get('/apartmentDetails/{id}', [ApartmentController::class , 'displayAprtmentDetails'])->name('red');
 Route::post('/apartmentDetails/{id}', [CommentController::class , 'addComment']);
+Route::post('/deleteComment/{id}', [CommentController::class , 'deleteComment']);
 Route::post('/favorite/{id}', [ApartmentController::class , 'addToFavorite']);
+Route::get('/myApartment/{id}', [ApartmentController::class , 'myApartment']);

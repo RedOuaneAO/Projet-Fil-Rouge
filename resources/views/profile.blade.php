@@ -54,7 +54,7 @@
                                 <span class="ms-1 d-none d-sm-inline">Favorite</span> </a>
                         </li>
                         <li>
-                            <a href="" class="nav-link px-0 text-danger">
+                            <a href="/myApartment/1" class="nav-link px-0 text-danger">
                                 <i class="bi bi-house-door"></i>
                                 <span class="ms-1 d-none d-sm-inline">My apartments</span> </a>
                         </li>

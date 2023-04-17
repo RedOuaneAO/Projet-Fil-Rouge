@@ -17,4 +17,10 @@ class CommentController extends Controller
         return redirect('/apartmentDetails/'.$id);
         // return back();
     }
+    public function deleteComment($id){
+        // return $id;
+        $comment= Comment::where('id',$id)->first();
+         $comment->delete();
+         return back();
+    }
 }

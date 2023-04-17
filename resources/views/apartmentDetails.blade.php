@@ -123,12 +123,18 @@
                     @foreach($apartComments as $comment)
                         <div class="card mt-sm-3 shadow rounded col-md-5 mx-auto col-12 mt-3 ">
                             <div class="card-body ">
-                                <div class="d-flex">
-                                    <img class="rounded-circle" width="50" height="50" src="/img/face.jpg" alt="User avatar">
-                                    <div class="ms-3">
-                                        <h6 class="fw-bold">User Name</h6>
-                                        <p class="text-secondary">août 2019</p>
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex">
+                                        <img class="rounded-circle" width="50" height="50" src="/img/face.jpg" alt="User avatar">
+                                        <div class="ms-3">
+                                            <h6 class="fw-bold">User Name</h6>
+                                            <p class="text-secondary">août 2019</p>
+                                        </div>
                                     </div>
+                                    <form action="/deleteComment/{{$comment->id}}" method="POST">
+                                        @csrf 
+                                        <button class="btn"><i class="bi bi-x-circle text-danger"></i></button>
+                                    </form>
                                 </div>
                                 <p>{{$comment->comment}}</p>
                             </div>
