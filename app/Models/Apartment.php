@@ -32,4 +32,7 @@ class Apartment extends Model
     {
         return $this->hasMany(Favorite::class ,'apartment_id');
     }
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -59,7 +59,7 @@
                                 <span class="ms-1 d-none d-sm-inline">My apartments</span> </a>
                         </li>
                         <li>
-                            <a href="#" class="nav-link px-0 text-danger">
+                            <a href="/logout" class="nav-link px-0 text-danger">
                                 <i class="bi bi-box-arrow-left"></i>
                                 <span class="ms-1 d-none d-sm-inline">Logout</span> </a>
                         </li>

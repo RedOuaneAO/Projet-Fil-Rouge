@@ -127,7 +127,7 @@
                                     <div class="d-flex">
                                         <img class="rounded-circle" width="50" height="50" src="/img/face.jpg" alt="User avatar">
                                         <div class="ms-3">
-                                            <h6 class="fw-bold">{{Auth::user()->name}}</h6>
+                                            <h6 class="fw-bold">{{$comment->user->name}}</h6>
                                             <p class="text-secondary">août 2019</p>
                                         </div>
                                     </div>
