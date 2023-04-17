@@ -15,24 +15,21 @@
             <h4 class="text-danger"><span class="text-black">Rent</span>It</h4>
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link active disabled" href="#">Home</a>
+                    <a class="nav-link active disabled" href="{{route('profile')}}">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#Apartment">Apartment</a>
+                    <a class="nav-link " href="{{route('apartmentsListdisplay')}}">Apartments</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#About">About</a>
+                    <a class="nav-link " href="/myFavorite/{{Auth::user()->id}}">Favorite</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#Contact">Contact</a>
+                    <a class="nav-link " href="/myApartment/{{Auth::user()->id}}">My apartments</a>
                 </li>
                 <li class="nav-item dropdown dropstart ">
                     <a class="nav-link dropdown-toggle " data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="bi bi-list text-white"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Login</a></li>
-                        <li><a class="dropdown-item" href="{{route('register')}}">Sign Up</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{{route('Home')}}">Logout</a></li>
+                        <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
                     </ul>
                 </li>
             </ul>
