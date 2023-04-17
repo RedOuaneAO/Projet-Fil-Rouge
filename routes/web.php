@@ -34,6 +34,7 @@ Route::get('/profile', function () {
 
 Route::post('/register', [AuthController::class , 'register'])->name('regi');
 Route::post('/login', [AuthController::class , 'login'])->name('logi');
+Route::get('/logout', [AuthController::class , 'logout'])->name('logout');
 Route::get('/index', [AuthController::class , 'get'])->name('index');
 Route::post('/index', [ApartmentController::class , 'store'])->name('aprtmentStore');
 Route::get('/apartmentsList', [ApartmentController::class , 'displayAprtment'])->name('apartmentsListdisplay');

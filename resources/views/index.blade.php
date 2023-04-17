@@ -6,18 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"/>
-    <link rel="stylesheet" href="/css/style.css">
-    <title>Document</title>
-</head>
-<body>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"/>
     <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
@@ -61,12 +49,12 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/myFavorite/1" class="nav-link px-0 text-danger">
+                            <a href="/myFavorite/{{Auth::user()->id}}" class="nav-link px-0 text-danger">
                                 <i class="bi bi-heart"></i>
                                 <span class="ms-1 d-none d-sm-inline">Favorite</span> </a>
                         </li>
                         <li>
-                            <a href="/myApartment/1" class="nav-link px-0 text-danger">
+                            <a href="/myApartment/{{Auth::user()->id}}" class="nav-link px-0 text-danger">
                                 <i class="bi bi-house-door"></i>
                                 <span class="ms-1 d-none d-sm-inline">My apartments</span> </a>
                         </li>
@@ -85,11 +73,13 @@
                     <h5 class="fw-bold mt-3 ms-3">Add Apartment</h5>
                     <div class="row">
                         <div class="col-md-3">
-                            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                                <img class="img-thumbnail mt-5" width="150px" src="./img/img1.jpg">
-                                <div class="d-flex f-wrap">
-                                    <img class="img-thumbnail " width="75px" src="./img/img1.jpg">
-                                    <img class="img-thumbnail " width="75px" src="./img/img1.jpg">
+                            <div class="d-flex text-center p-3 py-5">
+                                <div class="d-flex d-md-block flex-wrap justify-content-center" id="preview">
+                                    {{-- <img class="img-thumbnail w-50 "  src="./img/img1.jpg">
+                                    <img class="img-thumbnail w-50 "  src="./img/img1.jpg">
+                                    <img class="img-thumbnail w-50 "  src="./img/img1.jpg">
+                                    <img class="img-thumbnail w-50 "  src="./img/img1.jpg">
+                                    <img class="img-thumbnail w-50 "  src="./img/img1.jpg"> --}}
                                 </div>
                             </div>
                         </div>
@@ -124,7 +114,7 @@
                                     </div>
                                     <div class="row mt-3">
                                         <div class="col-md-12"><label>Number of the rooms</label><input type="number" name="roomsNumber" class="form-control"></div>
-                                        <div class="col-md-12"> <label>Images</label><input type="file" name="image[]" class="form-control" multiple></div>
+                                        <div class="col-md-12"> <label>Images</label><input type="file" name="image[]" id="inputId" class="form-control" multiple></div>
                                     </div>
                                     <div class="mt-5 text-center">
                                         <button class="btn btn-primary" type="submit" type="button">Add</button>
@@ -171,8 +161,21 @@
         </div>
     </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
-</body>
-</html>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+<script>
+    document.getElementById('inputId').addEventListener('change', function() {
+        var preview = document.getElementById('preview');
+        preview.innerHTML = '';
+        for (var i = 0; i < this.files.length; i++) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var img = document.createElement('img');
+                img.setAttribute('src', e.target.result);
+                img.setAttribute('class', 'img-thumbnail w-50');
+                preview.appendChild(img);
+            };
+            reader.readAsDataURL(this.files[i]);
+        }
+    });
+</script>
 </body>
 </html>

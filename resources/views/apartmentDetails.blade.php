@@ -127,14 +127,16 @@
                                     <div class="d-flex">
                                         <img class="rounded-circle" width="50" height="50" src="/img/face.jpg" alt="User avatar">
                                         <div class="ms-3">
-                                            <h6 class="fw-bold">User Name</h6>
+                                            <h6 class="fw-bold">{{Auth::user()->name}}</h6>
                                             <p class="text-secondary">août 2019</p>
                                         </div>
                                     </div>
-                                    <form action="/deleteComment/{{$comment->id}}" method="POST">
-                                        @csrf 
-                                        <button class="btn"><i class="bi bi-x-circle text-danger"></i></button>
-                                    </form>
+                                    @if($comment->user_id == Auth::user()->id)
+                                        <form action="/deleteComment/{{$comment->id}}" method="POST">
+                                            @csrf 
+                                            <button class="btn"><i class="bi bi-x-circle text-danger"></i></button>
+                                        </form>
+                                    @endif
                                 </div>
                                 <p>{{$comment->comment}}</p>
                             </div>

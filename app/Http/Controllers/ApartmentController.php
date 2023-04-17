@@ -8,6 +8,7 @@ use App\Models\Favorite;
 use App\Models\Apartment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ApartmentController extends Controller
 {
@@ -28,7 +29,7 @@ class ApartmentController extends Controller
             'price'=>$Request->price,
             'roomsNumber'=>$Request->roomsNumber,
             'address'=>$Request->address,
-            'user_id'=>1,
+            'user_id'=>Auth::user()->id,
             'cities_id'=>5,
         ]);
         $images = $Request->file('image');
@@ -46,32 +47,30 @@ class ApartmentController extends Controller
     public function displayAprtmentDetails($id){
         $apartDetails= Apartment::where('id',$id)->get();
         $apartComments=Comment::where('apartment_id',$id)->get();
-        // return $apartDetails[0]->id;    
         return view('/apartmentDetails', compact('apartDetails' , 'apartComments'));
 
     }
     public function addToFavorite($id){
-            $favorite = Favorite::where('apartment_id', $id)->where('user_id', 1)->first();
+            $user=Auth::user()->id;
+            $favorite = Favorite::where('apartment_id', $id)->where('user_id', $user)->first();
             if ($favorite) {
                 $favorite->delete(); 
                 return back()->with('success','has been deleted from favorite');
             } else {
                 Favorite::create([
                     'apartment_id' => $id,
-                    'user_id' => 1
+                    'user_id' => $user
                 ]); 
                 return back()->with('success','has been added to favorite');
             }
     }
     public function favoriteApart($id){
         $Apartments = Apartment::whereHas('favorites', function ($query) use ($id) {$query->where('user_id', $id);})->with('images')->get();
-        // return $apartments;
         return view('/myFavorite', compact('Apartments'));
     }
 
     public function myApartment($id){
         $Apartments = Apartment::where('user_id',$id)->with('images')->get();
-        // return $Apartments;
         if ($Apartments->count() === 0) {
             $message = 'No apartments found.';
             return view('myApartment', compact('message'));

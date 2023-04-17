@@ -20,8 +20,8 @@
                     <div class="d-flex flex-column mx-auto my-3 d-none d-sm-inline">
                         <img src="./img/face.jpg" width="80px" class="rounded-circle" alt="avatar image">
                         <div class="d-flex flex-column text-black">
-                            <span class="fw-bold">User Name</span>
-                            <span class="text-secondary" style="font-size: 12px">UserEmail@gmail.com</span>
+                            <span class="fw-bold">{{Auth::user()->name}}</span>
+                            <span class="text-secondary" style="font-size: 12px">{{Auth::user()->email}}</span>
                         </div>
                     </div>
                     <ul class="nav flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start">
@@ -49,17 +49,17 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/myFavorite/1" class="nav-link px-0 text-danger">
+                            <a href="/myFavorite/{{Auth::user()->id}}" class="nav-link px-0 text-danger">
                                 <i class="bi bi-heart"></i>
                                 <span class="ms-1 d-none d-sm-inline">Favorite</span> </a>
                         </li>
                         <li>
-                            <a href="/myApartment/1" class="nav-link px-0 text-danger">
+                            <a href="/myApartment/{{Auth::user()->id}}" class="nav-link px-0 text-danger">
                                 <i class="bi bi-house-door"></i>
                                 <span class="ms-1 d-none d-sm-inline">My apartments</span> </a>
                         </li>
                         <li>
-                            <a href="#" class="nav-link px-0 text-danger">
+                            <a href="/logout" class="nav-link px-0 text-danger">
                                 <i class="bi bi-box-arrow-left"></i>
                                 <span class="ms-1 d-none d-sm-inline">Logout</span> </a>
                         </li>
@@ -68,7 +68,6 @@
             </div>
 
                 {{-- -------------------------------content --------------------------------------}}
-
             <div class="col py-3 overflow-x-hidden overflow-y-scroll" style="height: 100vh">
                 <div class="mx-auto sticky-top bg-white bg-opacity-75 p-3 rounded" style="width: 60%">
                     <div class="mb-3">

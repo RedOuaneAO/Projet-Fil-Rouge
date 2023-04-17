@@ -43,7 +43,12 @@ class AuthController extends Controller
             ], 401);
         }
         return redirect('/apartmentsList');
-        // $user = Auth::user();
+    }
+    public function logout() {
+        Auth::logout(); 
+        // $request->session()->invalidate(); 
+        // $request->session()->regenerateToken();
+        return redirect('/'); 
     }
     public function get(){
         $variable = DB::table('cities')->get();

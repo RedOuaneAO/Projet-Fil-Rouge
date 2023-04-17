@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -12,7 +13,7 @@ class CommentController extends Controller
         Comment::create([
             'comment'=>$request->comment,
             'apartment_id'=>$id,
-            'user_id'=>1
+            'user_id'=>Auth::user()->id
         ]);
         return redirect('/apartmentDetails/'.$id);
         // return back();
@@ -20,7 +21,8 @@ class CommentController extends Controller
     public function deleteComment($id){
         // return $id;
         $comment= Comment::where('id',$id)->first();
-         $comment->delete();
-         return back();
+        // return $comment;
+        $comment->delete();
+        return back();
     }
 }
