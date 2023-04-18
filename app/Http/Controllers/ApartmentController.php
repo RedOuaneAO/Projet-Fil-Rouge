@@ -25,12 +25,12 @@ class ApartmentController extends Controller
     public function store(Request $Request){
         $apartment= Apartment::create([
             'title'=>$Request->title,
-            'image'=>'test',
             'price'=>$Request->price,
             'roomsNumber'=>$Request->roomsNumber,
+            'guestsNumber'=>$Request->guestsNumber,
             'address'=>$Request->address,
             'user_id'=>Auth::user()->id,
-            'cities_id'=>5,
+            'city'=>$Request->city,
         ]);
         $images = $Request->file('image');
         foreach ($images as $image) {
@@ -43,19 +43,17 @@ class ApartmentController extends Controller
         }
         return redirect('/apartmentsList');    
     }
-    
     public function displayAprtmentDetails($id){
         $apartDetails= Apartment::where('id',$id)->with('images')->get();
         $apartComments=Comment::where('apartment_id',$id)->with('user')->orderBy('id','DESC')->get();
         return view('/apartmentDetails', compact('apartDetails' , 'apartComments'));
-
     }
     public function addToFavorite($id){
             $user=Auth::user()->id;
             $favorite = Favorite::where('apartment_id', $id)->where('user_id', $user)->first();
             if ($favorite) {
                 $favorite->delete(); 
-                return back()->with('success','has been deleted from favorite');
+                return back()->with('success','has been removed from favorite');
             } else {
                 Favorite::create([
                     'apartment_id' => $id,
@@ -69,7 +67,6 @@ class ApartmentController extends Controller
         $apartment->delete();
         return back();
     }
-
     public function myApartment($id){
         $Apartments = Apartment::where('user_id',$id)->with('images')->get();
         if ($Apartments->count() === 0) {
@@ -79,10 +76,13 @@ class ApartmentController extends Controller
             return view('myApartment', compact('Apartments'));
         }
     }
-    
     public function favoriteApart($id){
         $Apartments = Apartment::whereHas('favorites', function ($query) use ($id) {$query->where('user_id', $id);})->with('images')->get();
         return view('/myFavorite', compact('Apartments'));
+    }
+    public static function checkFavorite($id){
+        $favorite = DB::table('favorites')->where('apartment_id', $id)->where('user_id', Auth::user()->id)->get();
+        return $favorite->isNotEmpty();
     }
 }
 

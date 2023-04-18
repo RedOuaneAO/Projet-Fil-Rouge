@@ -75,11 +75,6 @@
                         <div class="col-md-3">
                             <div class="d-flex text-center p-3 py-5">
                                 <div class="d-flex d-md-block flex-wrap justify-content-center" id="preview">
-                                    {{-- <img class="img-thumbnail w-50 "  src="./img/img1.jpg">
-                                    <img class="img-thumbnail w-50 "  src="./img/img1.jpg">
-                                    <img class="img-thumbnail w-50 "  src="./img/img1.jpg">
-                                    <img class="img-thumbnail w-50 "  src="./img/img1.jpg">
-                                    <img class="img-thumbnail w-50 "  src="./img/img1.jpg"> --}}
                                 </div>
                             </div>
                         </div>
@@ -96,25 +91,28 @@
                                             <input type="text" name="title" class="form-control">
                                         </div>
                                         <div class="col-md-6">
-                                            <label>Address</label>
-                                            <input type="text" class="form-control" placeholder="Inter the apartment Address">
+                                            <label>Number of the guest</label><input type="number" name="guestsNumber" class="form-control">
                                         </div>
                                         <div class="col-md-6">
                                             <label>Price</label><input type="number" name="price" class="form-control">
                                         </div>
                                         <div class="col-md-6">
-                                            <label>City</label>
-                                            <select class="form-select" name="address">
-                                                <option value="" disabled selected>Select</option>
-                                                @foreach($variable as $var)
-                                                <option value="{{$var->city}}">{{$var->city}}</option>
-                                                @endforeach
-                                            </select>
+                                            <label>Number of the rooms</label><input type="number" name="roomsNumber" class="form-control">
                                         </div>
                                     </div>
                                     <div class="row mt-3">
-                                        <div class="col-md-12"><label>Number of the rooms</label><input type="number" name="roomsNumber" class="form-control"></div>
-                                        <div class="col-md-12"> <label>Images</label><input type="file" name="image[]" id="inputId" class="form-control" multiple></div>
+                                        <div class="col-md-12"> 
+                                            <label>City</label>
+                                            <select class="form-select" name="city">
+                                                <option value="" disabled selected>Select</option>
+                                                @foreach($variable as $var)
+                                                    <option value="{{$var->city}}">{{$var->city}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-md-12"><label>Address</label>
+                                            <input type="text" class="form-control" name="address" placeholder="Inter the apartment Address"></div>
+                                        <div class="col-md-12"><label>Images</label><input type="file" name="image[]" id="inputId" class="form-control" multiple></div>
                                     </div>
                                     <div class="mt-5 text-center">
                                         <button class="btn btn-primary" type="submit" type="button">Add</button>

@@ -46,14 +46,18 @@
                         <span>189 Review</span>
                     </div>
                     <div >
-                        <p><span class="fw-bold">Location :</span>{{$apartDetails[0]->address}}</p>
+                        <p><span class="fw-bold">Location :</span> {{$apartDetails[0]->city .' - '.  $apartDetails[0]->address}}</p>
                     </div>
                 </div>
                 <div class="align-self-end d-flex">
-                    <h5 class="fw-bold me-3">{{$apartDetails[0]->price}}<span class="text-secondary"> $</span></h5>
+                    <h5 class="fw-bold me-3">{{$apartDetails[0]->price}} $<span class="text-secondary fw-normal small">  per night</span></h5>
                     <form action="/favorite/{{$apartDetails[0]->id}}" method="POST" id="myForm">
                         @csrf
-                        <button class="btn text-white bg-danger"><i class="bi bi-heart favoriteBtn"></i> Favorit</button>
+                        @if(App\Http\Controllers\ApartmentController::checkFavorite($apartDetails[0]->id))
+                            <button class="btn text-white bg-danger"><i class="bi bi-heart-fill"></i></button>
+                        @else
+                        <button class="btn text-white bg-danger"><i class="bi bi-heart"></i></button>
+                        @endif
                     </form>
                 </div>
             </div>
@@ -86,8 +90,7 @@
                 <div class=""><img src="/img/face.jpg" width="50" class="rounded-circle" alt=""></div>
             </div>
             <div>
-                {{-- <p>10 travelers. 5 bedrooms. 8 beds. 5,5 bathrooms</p> --}}
-                <p class="fw-bold">{{$apartDetails[0]->roomsNumber}}<span class="text-secondary"> Rooms</span></p>
+                <p class="small">{{$apartDetails[0]->roomsNumber}}<span class="text-secondary"> Rooms</span> . {{$apartDetails[0]->guestsNumber}}<span class="text-secondary"> Guests</span></p>
             </div>
             <hr style="width: 60%">
             <div>
