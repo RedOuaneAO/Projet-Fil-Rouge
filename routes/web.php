@@ -45,3 +45,4 @@ Route::post('/apartmentDetails/{id}', [CommentController::class , 'addComment'])
 Route::post('/deleteComment/{id}', [CommentController::class , 'deleteComment']);
 Route::post('/favorite/{id}', [ApartmentController::class , 'addToFavorite']);
 Route::get('/myApartment/{id}', [ApartmentController::class , 'myApartment']);
+Route::post('/deleteApartment/{id}', [ApartmentController::class , 'deleteApartment']);

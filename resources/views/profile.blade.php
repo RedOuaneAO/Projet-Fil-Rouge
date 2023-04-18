@@ -20,8 +20,8 @@
                     <div class="d-flex flex-column mx-auto my-3 d-none d-sm-inline">
                         <img src="./img/face.jpg" width="80px" class="rounded-circle" alt="avatar image">
                         <div class="d-flex flex-column text-black">
-                            <span class="fw-bold">User Name</span>
-                            <span class="text-secondary" style="font-size: 12px">UserEmail@gmail.com</span>
+                            <span class="fw-bold">{{Auth::user()->name}}</span>
+                            <span class="text-secondary" style="font-size: 12px">{{Auth::user()->email}}</span>
                         </div>
                     </div>
                     <ul class="nav flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start">
@@ -75,8 +75,8 @@
                         <div class="col-md-3">
                             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                                 <img class="rounded-circle mt-5" width="100px" src="./img/face.jpg">
-                                <span class="font-weight-bold my-2 fw-bold">RedOne</span>
-                                <span class="text-black-50">redone@gmail.com</span>
+                                <span class="font-weight-bold my-2 fw-bold">{{Auth::user()->name}}</span>
+                                <span class="text-black-50">{{Auth::user()->email}}</span>
                             </div>
                         </div>
                         <div class="col-md-5">
@@ -87,7 +87,7 @@
                                 <div class="row mt-2">
                                     <div class="col-md-6">
                                         <label>User name</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" value="{{Auth::user()->name}}">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Gender</label>
@@ -100,7 +100,7 @@
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-md-12"><label>Phone Number</label><input type="tel" class="form-control" placeholder="Add your Phone Number"></div>
-                                    <div class="col-md-12"><label>Email</label><input type="email" class="form-control"></div>
+                                    <div class="col-md-12"><label>Email</label><input type="email" class="form-control" value="{{Auth::user()->email}}"></div>
                                     <div class="col-md-12"><label>Password</label><input type="password" class="form-control"></div>
                                     <div class="col-md-12"><label>Address</label><input type="password" class="form-control"></div>
                                 </div>

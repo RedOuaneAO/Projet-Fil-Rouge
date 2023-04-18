@@ -12,7 +12,7 @@
 <body>
     <div class="container-fluid">
         <div class="row flex-nowrap">
-            <div class="col-auto col-xl-2 px-sm-2 px-0 shadow" style="height: 100vh">
+            <div class="col-auto col-xl-2 px-sm-3 px-0 shadow" style="height: 100vh">
                 <div class="d-flex flex-column  px-3 pt-2">
                     <a href="#" class="pb-3 mb-md-0 text-decoration-none text-dark fs-5 d-none d-sm-inline">Rent
                         <span class="text-danger">It</span>
@@ -20,8 +20,8 @@
                     <div class="d-flex flex-column mx-auto my-3 d-none d-sm-inline">
                         <img src="/img/face.jpg" width="80px" class="rounded-circle" alt="avatar image">
                         <div class="d-flex flex-column text-black">
-                            <span class="fw-bold">User Name</span>
-                            <span class="text-secondary" style="font-size: 12px">UserEmail@gmail.com</span>
+                            <span class="fw-bold">{{Auth::user()->name}}</span>
+                            <span class="text-secondary" style="font-size: 12px">{{Auth::user()->email}}</span>
                         </div>
                     </div>
                     <ul class="nav flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start">
@@ -100,15 +100,54 @@
                 @php
                     $counter =0;
                 @endphp
-                <div class=" mt-4 d-flex justify-content-evenly flex-wrap">
+                <div class=" mt-4">
                     @if(isset($message))
                         <p>{{ $message }}</p>
                     @else
-                        @foreach ($Apartments as $apartment)
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3 ">
+                            <h6 class="m-0 fw-bold text-primary">My Apartment</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped border">
+                                    <thead class="bg-secondary bg-opacity-25">
+                                        <tr>
+                                            <th scope="col">Image</th>
+                                            <th scope="col">Title</th>
+                                            <th scope="col">Address</th>
+                                            <th scope="col">RoomsNumber</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($Apartments as $apartment)
+                                            <tr>
+                                                <td><img src="/img/{{$apartment->images[0]->image}}" width="50"></td>
+                                                <td>{{ $apartment->title }}</td>
+                                                <td>{{ $apartment->address }}</td>
+                                                <td>{{ $apartment->roomsNumber }}</td>
+                                                <td>{{ $apartment->price }}</td>
+                                                <td>
+                                                    <form action="/deleteApartment/{{$apartment->id}}" method="POST">
+                                                        @csrf 
+                                                        <button class="btn"><i class="bi bi-x-circle text-danger"></i></button>
+                                                    </form>
+                                                    <button class="btn"><i class="bi bi-pencil-square text-success"></i></button>
+                                                </td>
+                                            </tr>
+                                        @endforeach 
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                        {{-- @foreach ($Apartments as $apartment)
                             <a href="/apartmentDetails/{{$apartment->id}}" class="text-decoration-none">
                                 <div class=" mb-4 shadow rounded">
-                                    <div class="card" style="width: 17rem;">
-                                        <div id="{{'swipe'.$counter}}" class="carousel slide">  {{--data-bs-ride="carousel"--}}
+                                    <div class="card" style="width: 15rem;">
+                                        <div id="{{'swipe'.$counter}}" class="carousel slide"> 
                                             <div class="carousel-inner">
                                                 @foreach ($apartment->images as $image)
                                                     <div class="carousel-item active">
@@ -117,12 +156,10 @@
                                                 @endforeach
                                             </div>
                                             <button class="carousel-control-prev" type="button" data-bs-target="{{'#swipe'.$counter}}" data-bs-slide="prev">
-                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                {{-- <span class="visually-hidden">Previous</span> --}}
+                                                <span class="carousel-control-prev-icon border rounded"></span>
                                             </button>
                                             <button class="carousel-control-next" type="button" data-bs-target="{{'#swipe'.$counter}}" data-bs-slide="next">
-                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                {{-- <span class="visually-hidden">Next</span> --}}
+                                                <span class="carousel-control-next-icon"></span>
                                             </button>
                                         </div>
                                         <div class="card-body">
@@ -139,7 +176,7 @@
                                     $counter++;
                                 @endphp
                             </a>
-                        @endforeach
+                        @endforeach --}}
                     @endif
                 </div>
             </div>

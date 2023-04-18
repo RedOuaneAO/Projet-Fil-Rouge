@@ -153,11 +153,6 @@
         </section>
         <section id="imgs" class="container-fluid bg-white">
             <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-                {{-- <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div> --}}
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="./img/img1.jpg" class="img-fluid" style="" alt="...">

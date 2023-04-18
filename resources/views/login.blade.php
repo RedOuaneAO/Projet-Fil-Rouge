@@ -36,7 +36,7 @@
                         <label for="" class="fw-bold">Password</label>
                         <input type="password" name="password" class="form-control" placeholder="Password">
                     </div>
-                    <button class="btn btn-primary form-control my-3 fw-bold">Login Up</button>
+                    <button class="btn btn-primary form-control my-3 fw-bold">Login</button>
                     <button class="btn bg-white form-control mb-3 fw-bold"><i class="bi bi-google text-danger me-3"></i>Sign Up With Google</button>
                     <a href="{{route('register')}}" class="m-2">I don't have account</a>
                 </form>

@@ -15,7 +15,7 @@
             <h4 class="text-danger"><span class="text-black">Rent</span>It</h4>
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link active disabled" href="{{route('profile')}}">Profile</a>
+                    <a class="nav-link" href="{{route('profile')}}">Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="{{route('apartmentsListdisplay')}}">Apartments</a>

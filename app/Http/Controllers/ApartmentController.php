@@ -64,9 +64,10 @@ class ApartmentController extends Controller
                 return back()->with('success','has been added to favorite');
             }
     }
-    public function favoriteApart($id){
-        $Apartments = Apartment::whereHas('favorites', function ($query) use ($id) {$query->where('user_id', $id);})->with('images')->get();
-        return view('/myFavorite', compact('Apartments'));
+    public function deleteApartment($id){
+        $apartment= Apartment::where('id',$id)->first();
+        $apartment->delete();
+        return back();
     }
 
     public function myApartment($id){
@@ -77,6 +78,11 @@ class ApartmentController extends Controller
         } else {
             return view('myApartment', compact('Apartments'));
         }
+    }
+    
+    public function favoriteApart($id){
+        $Apartments = Apartment::whereHas('favorites', function ($query) use ($id) {$query->where('user_id', $id);})->with('images')->get();
+        return view('/myFavorite', compact('Apartments'));
     }
 }
 

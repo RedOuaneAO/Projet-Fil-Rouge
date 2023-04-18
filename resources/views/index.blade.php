@@ -20,8 +20,8 @@
                     <div class="d-flex flex-column mx-auto my-3 d-none d-sm-inline">
                         <img src="./img/face.jpg" width="80px" class="rounded-circle" alt="avatar image">
                         <div class="d-flex flex-column text-black">
-                            <span class="fw-bold">User Name</span>
-                            <span class="text-secondary" style="font-size: 12px">UserEmail@gmail.com</span>
+                            <span class="fw-bold">{{Auth::user()->name}}</span>
+                            <span class="text-secondary" style="font-size: 12px">{{Auth::user()->email}}</span>
                         </div>
                     </div>
                     <ul class="nav flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start">

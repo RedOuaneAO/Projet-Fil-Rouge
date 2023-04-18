@@ -19,9 +19,7 @@ class CommentController extends Controller
         // return back();
     }
     public function deleteComment($id){
-        // return $id;
         $comment= Comment::where('id',$id)->first();
-        // return $comment;
         $comment->delete();
         return back();
     }
