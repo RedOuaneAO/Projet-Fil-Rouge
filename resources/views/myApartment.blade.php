@@ -130,11 +130,14 @@
                                                 <td>{{ $apartment->roomsNumber }}</td>
                                                 <td>{{ $apartment->price }}</td>
                                                 <td>
-                                                    <form action="/deleteApartment/{{$apartment->id}}" method="POST">
+                                                    {{-- <form action="/deleteApartment/{{$apartment->id}}" method="POST">
+                                                        @csrf  --}}
+                                                        <a href="/deleteApartment/{{$apartment->id}}" class="btn"><i class="bi bi-x-circle text-danger"></i></a>
+                                                    {{-- </form> --}}
+                                                    <form action="/updateApartmentView/{{$apartment->id}}" method="POST">
                                                         @csrf 
-                                                        <button class="btn"><i class="bi bi-x-circle text-danger"></i></button>
+                                                        <button class="btn"><i class="bi bi-pencil-square text-success"></i></button>
                                                     </form>
-                                                    <button class="btn"><i class="bi bi-pencil-square text-success"></i></button>
                                                 </td>
                                             </tr>
                                         @endforeach 

@@ -22,6 +22,7 @@ class ApartmentController extends Controller
             return view('apartmentsList', compact('Apartments'));
         }
     }
+
     public function store(Request $Request){
         $apartment= Apartment::create([
             'title'=>$Request->title,
@@ -43,11 +44,13 @@ class ApartmentController extends Controller
         }
         return redirect('/apartmentsList');    
     }
+
     public function displayAprtmentDetails($id){
         $apartDetails= Apartment::where('id',$id)->with('images')->get();
         $apartComments=Comment::where('apartment_id',$id)->with('user')->orderBy('id','DESC')->get();
         return view('/apartmentDetails', compact('apartDetails' , 'apartComments'));
     }
+
     public function addToFavorite($id){
             $user=Auth::user()->id;
             $favorite = Favorite::where('apartment_id', $id)->where('user_id', $user)->first();
@@ -62,11 +65,45 @@ class ApartmentController extends Controller
                 return back()->with('success','has been added to favorite');
             }
     }
+
     public function deleteApartment($id){
         $apartment= Apartment::where('id',$id)->first();
         $apartment->delete();
         return back();
     }
+
+    public function updateApartmentView($id){
+        $apartment= Apartment::where('id',$id)->with('images')->first();
+        $variable = DB::table('cities')->get();
+        return view('updateApartment' , compact('variable','apartment'));
+    }
+
+    public function updateApartment(Request $Request ,$id){
+        $apartment = Apartment::findOrFail($id);    
+        if($Request->hasFile('image')){
+            Image::where('apartment_id', $apartment->id)->delete();      // Delete existing images associated with the apartment
+            $images = $Request->file('image');
+            foreach ($images as $image) {
+                $filename = $image->getClientOriginalName();
+                $image->move(public_path('img'), $filename);
+            Image::create([
+                'image'=>$filename,
+                'apartment_id'=>$apartment->id
+            ]);
+        }
+    }
+        $apartment->update([
+            'title'=>$Request->title,
+            'price'=>$Request->price,
+            'roomsNumber'=>$Request->roomsNumber,
+            'guestsNumber'=>$Request->guestsNumber,
+            'address'=>$Request->address,
+            'user_id'=>Auth::user()->id,
+            'city'=>$Request->city,
+        ]);
+        return 'ok';       
+}
+
     public function myApartment($id){
         $Apartments = Apartment::where('user_id',$id)->with('images')->get();
         if ($Apartments->count() === 0) {
@@ -76,10 +113,12 @@ class ApartmentController extends Controller
             return view('myApartment', compact('Apartments'));
         }
     }
+
     public function favoriteApart($id){
         $Apartments = Apartment::whereHas('favorites', function ($query) use ($id) {$query->where('user_id', $id);})->with('images')->get();
         return view('/myFavorite', compact('Apartments'));
     }
+
     public static function checkFavorite($id){
         $favorite = DB::table('favorites')->where('apartment_id', $id)->where('user_id', Auth::user()->id)->get();
         return $favorite->isNotEmpty();

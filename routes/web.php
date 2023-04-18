@@ -46,3 +46,7 @@ Route::post('/deleteComment/{id}', [CommentController::class , 'deleteComment'])
 Route::post('/favorite/{id}', [ApartmentController::class , 'addToFavorite']);
 Route::get('/myApartment/{id}', [ApartmentController::class , 'myApartment']);
 Route::post('/deleteApartment/{id}', [ApartmentController::class , 'deleteApartment']);
+
+
+Route::post('/updateApartmentView/{id}', [ApartmentController::class , 'updateApartmentView']);
+Route::put('/updateApartment/{id}', [ApartmentController::class , 'updateApartment'])->name('updateApart');
