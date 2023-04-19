@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ApartmentController;
 
 /*
@@ -38,10 +39,11 @@ Route::get('/bookingRequest', function () {
 Route::post('/register', [AuthController::class , 'register'])->name('regi');
 Route::post('/login', [AuthController::class , 'login'])->name('logi');
 Route::get('/logout', [AuthController::class , 'logout'])->name('logout');
+Route::put('/updateProfile/{id}',[ProfileController::class,'updateProfile']);
+// ------apartment 
 Route::get('/index', [AuthController::class , 'get'])->name('index');
 Route::post('/index', [ApartmentController::class , 'store'])->name('aprtmentStore');
 Route::get('/apartmentsList', [ApartmentController::class , 'displayAprtment'])->name('apartmentsListdisplay');
-// ------apartment details
 Route::get('/myFavorite/{id}',[ApartmentController::class , 'favoriteApart']);
 Route::get('/apartmentDetails/{id}', [ApartmentController::class , 'displayAprtmentDetails'])->name('red');
 Route::post('/apartmentDetails/{id}', [CommentController::class , 'addComment']);
@@ -49,7 +51,5 @@ Route::post('/deleteComment/{id}', [CommentController::class , 'deleteComment'])
 Route::post('/favorite/{id}', [ApartmentController::class , 'addToFavorite']);
 Route::get('/myApartment/{id}', [ApartmentController::class , 'myApartment']);
 Route::post('/deleteApartment/{id}', [ApartmentController::class , 'deleteApartment']);
-
-
 Route::post('/updateApartmentView/{id}', [ApartmentController::class , 'updateApartmentView']);
 Route::put('/updateApartment/{id}', [ApartmentController::class , 'updateApartment'])->name('updateApart');

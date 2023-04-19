@@ -73,11 +73,14 @@
                     <h5 class="fw-bold mt-3 ms-3">Profile</h5>
                     <div class="row">
                         <div class="col-md-3">
+                        <form action="updateProfile/{{Auth::user()->id}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
                             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                                 <div>
                                     <div class="mb-3 img w-25 w-100">
                                         <img class="rounded-circle mt-5" id="image" width="100px" src="./img/face.jpg">
-                                        <input type="file" id="imgInput" name="img"  style="display: none;" class="@error('img') is-invalid @enderror"/>
+                                        <input type="file" id="imgInput" name="image"  style="display: none;" class="@error('img') is-invalid @enderror"/>
                                         @error('img')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -97,22 +100,27 @@
                                 <div class="row mt-2">
                                     <div class="col-md-6">
                                         <label>User name</label>
-                                        <input type="text" class="form-control" value="{{Auth::user()->name}}">
+                                        <input type="text" name="name" class="form-control" value="{{Auth::user()->name}}">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Gender</label>
-                                        <select class="form-select">
+                                        <select class="form-select" name="gender">
                                             <option value="" disabled selected>Select</option>
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
+                                            @if(Auth::user()->gender == 'Male')
+                                                <option  selected>{{Auth::user()->gender}}</option>
+                                                <option value="Female">Female</option>
+                                            @else
+                                                <option value="Male">Male</option>
+                                                <option  selected>{{Auth::user()->gender}}</option>
+                                            @endif
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row mt-3">
-                                    <div class="col-md-12"><label>Phone Number</label><input type="tel" class="form-control" placeholder="Add your Phone Number"></div>
-                                    <div class="col-md-12"><label>Email</label><input type="email" class="form-control" value="{{Auth::user()->email}}"></div>
-                                    <div class="col-md-12"><label>New Password</label><input type="password" class="form-control"></div>
-                                    <div class="col-md-12"><label>Confirm Password</label><input type="password" class="form-control"></div>
+                                    <div class="col-md-12"><label>Phone Number</label><input type="tel" name="phone" class="form-control" placeholder="Add your Phone Number"></div>
+                                    <div class="col-md-12"><label>Email</label><input type="email" name="email" class="form-control" value="{{Auth::user()->email}}"></div>
+                                    <div class="col-md-12"><label>New Password</label><input type="password" name="password" class="form-control"></div>
+                                    <div class="col-md-12"><label>Confirm Password</label><input type="password" name="pass_confirm" class="form-control"></div>
                                 </div>
                             </div>
                         </div>
@@ -133,8 +141,9 @@
                             </div>
                         </div>
                         <div class="my-2 text-center">
-                            <button class="btn btn-primary" type="button">Save Profile</button>
+                            <button class="btn btn-primary" type="submit">Save Profile</button>
                         </div>
+                    </form>
                     </div>
                 </div>
             </div>
