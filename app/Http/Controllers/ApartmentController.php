@@ -90,8 +90,8 @@ class ApartmentController extends Controller
                 'image'=>$filename,
                 'apartment_id'=>$apartment->id
             ]);
+            }
         }
-    }
         $apartment->update([
             'title'=>$Request->title,
             'price'=>$Request->price,
@@ -101,8 +101,8 @@ class ApartmentController extends Controller
             'user_id'=>Auth::user()->id,
             'city'=>$Request->city,
         ]);
-        return 'ok';       
-}
+        return redirect('/myApartment/'.Auth::user()->id,);
+    }
 
     public function myApartment($id){
         $Apartments = Apartment::where('user_id',$id)->with('images')->get();

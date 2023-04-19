@@ -44,33 +44,6 @@
                 <div class="d-flex justify-content-center align-items-center">
                     <p class="text-white" style="font-size:60px;">Get your Rental Apartment</p>
                 </div>
-                {{-- <div class="container">
-                    <div class="search-bar shadow bg-white">
-                        <form action="" class="d-flex align-items-center justify-content-between flex-wrap">
-                            <div class="location-input">
-                                <label for="" class="fw-bold" >Location</label>
-                                <input type="text" placeholder="Location">
-                            </div>
-                            <div>
-                                <label for="" class="fw-bold">Check in</label>
-                                <input type="date" placeholder="add date">
-                            </div>
-                            <div>
-                                <label for="" class="fw-bold">Check out</label>
-                                <input type="date" placeholder="add date">
-                            </div>
-                            <div class="d-block">
-                                <label for="" class="fw-bold">Guest</label>
-                                <select name="" id="" class="border-0">
-                                    <option value="">Guest 1</option>
-                                    <option value="">Guest 2</option>
-                                    <option value="">Guest 3</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="bg-danger rounded-circle border-0"><i class="bi bi-search"></i></button>
-                        </form>
-                    </div>
-                </div> --}}
                 <div class="d-flex justify-content-center ">
                     <button class="btn btn-danger">Login</button>
                     <a href="{{route('register')}}" class="btn border-danger text-danger ms-3">Register</a>

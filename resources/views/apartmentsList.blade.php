@@ -106,7 +106,7 @@
                         @foreach ($Apartments as $apartment)
                             <a href="/apartmentDetails/{{$apartment->id}}" class="text-decoration-none">
                                 <div class=" mb-4 shadow rounded">
-                                    <div class="card" style="width: 17rem;">
+                                    <div class="card" style="width: 15rem;">
                                         <div id="{{'swipe'.$counter}}" class="carousel slide">  {{--data-bs-ride="carousel"--}}
                                             <div class="carousel-inner">
                                                 @foreach ($apartment->images as $image)

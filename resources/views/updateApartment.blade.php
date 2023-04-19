@@ -108,7 +108,7 @@
                                             <label>City</label>
                                             <select class="form-select" name="city" >
                                                 <option value="" disabled>Select</option>
-                                                <option value="" selected>{{$apartment->city}}</option>
+                                                <option value="{{$apartment->city}}" selected>{{$apartment->city}}</option>
                                                 @foreach($variable as $var)
                                                     <option value="{{$var->city}}">{{$var->city}}</option>
                                                 @endforeach

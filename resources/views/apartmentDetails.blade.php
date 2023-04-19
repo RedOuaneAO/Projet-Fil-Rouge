@@ -50,7 +50,6 @@
                     </div>
                 </div>
                 <div class="align-self-end d-flex">
-                    <h5 class="fw-bold me-3">{{$apartDetails[0]->price}} $<span class="text-secondary fw-normal small">  per night</span></h5>
                     <form action="/favorite/{{$apartDetails[0]->id}}" method="POST" id="myForm">
                         @csrf
                         @if(App\Http\Controllers\ApartmentController::checkFavorite($apartDetails[0]->id))
@@ -62,7 +61,7 @@
                 </div>
             </div>
             @if ($message = Session::get('success')) 
-                <div class="alert alert-success d-flex mx-auto mt-2" id="myDiv" style="width: 95%;">
+                <div class="alert alert-success d-flex mx-auto mt-2" style="width: 90%;">
                     <p class="m-0">{{ $message }}</p>
                 </div>
             @endif
@@ -85,37 +84,68 @@
                     </div>
                 </div>
             </div>
-            <div class="d-flex mt-5 justify-content-between" style="width: 60%">
-                <div class=""><h4 class="fw-bold">perfect apartment in marrakech</h4></div>
-                <div class=""><img src="/img/face.jpg" width="50" class="rounded-circle" alt=""></div>
-            </div>
-            <div>
-                <p class="small">{{$apartDetails[0]->roomsNumber}}<span class="text-secondary"> Rooms</span> . {{$apartDetails[0]->guestsNumber}}<span class="text-secondary"> Guests</span></p>
-            </div>
-            <hr style="width: 60%">
-            <div>
-                <h5 class="fw-bold">What this accommodation offers</h5>
-                <div class="row mt-4" style="width: 60%">
-                    <div class="col-6">
-                        <p><i class="bi bi-wifi me-2"></i>wifi</p>
+            <div class="row">
+                <div class="col-12 col-sm-8">
+                    <div class="d-flex mt-5 justify-content-between">
+                        <div class=""><h4 class="fw-bold">perfect apartment in marrakech</h4></div>
+                        <div class=""><img src="/img/face.jpg" width="50" class="rounded-circle" alt=""></div>
                     </div>
-                    <div class="col-6">
-                        <p><i class="bi bi-asterisk me-2"></i>Climatisation</p>
+                    <div>
+                        <p class="small">{{$apartDetails[0]->roomsNumber}}<span class="text-secondary"> Rooms</span> . {{$apartDetails[0]->guestsNumber}}<span class="text-secondary"> Guests</span></p>
                     </div>
-                    <div class="col-6">
-                        <p><i class="bi bi-water me-2"></i>pool</p>
+                    <hr>
+                    <div class="">
+                        <h5 class="fw-bold">What this accommodation offers</h5>
+                        <div class="">
+                            <div class="row mt-4">
+                                <div class="col-6">
+                                    <p><i class="bi bi-wifi me-2"></i>wifi</p>
+                                </div>
+                                <div class="col-6">
+                                    <p><i class="bi bi-asterisk me-2"></i>Air conditioner</p>
+                                </div>
+                                <div class="col-6">
+                                    <p><i class="bi bi-water me-2"></i>pool</p>
+                                </div>
+                                <div class="col-6">
+                                    <p><i class="bi bi-wifi me-2"></i>wifi</p>
+                                </div>
+                                <div class="col-6">
+                                    <p><i class="bi bi-asterisk me-2"></i>Air conditioner</p>
+                                </div>
+                                <div class="col-6">
+                                    <p><i class="bi bi-water me-2"></i>pool</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-6">
-                        <p><i class="bi bi-wifi me-2"></i>wifi</p>
-                    </div>
-                    <div class="col-6">
-                        <p><i class="bi bi-asterisk me-2"></i>Climatisation</p>
-                    </div>
-                    <div class="col-6">
-                        <p><i class="bi bi-water me-2"></i>pool</p>
+                </div>
+                            {{-- reservation --}}
+                <div class=" mt-5 col-12 col-sm-4">
+                    <div class="card shadow">
+                        <div class="card-header py-3 ">
+                            <h5 class="fw-bold me-3">{{$apartDetails[0]->price}} DH<span class="text-secondary fw-normal small">  per night</span></h5>
+                        </div>
+                        <div class="card-body">
+                            <form action="">
+                                <div class="px-4 py-2">
+                                    <label for="">Check in </label>
+                                    <input type="date" class="form-control">
+                                </div>
+                                <div class="px-4 ">
+                                    <label for="">Check out </label>
+                                    <input type="date" class="form-control">
+                                </div>
+                                <hr>
+                                <div class="d-flex justify-content-center">
+                                    <button class="btn border-danger filter_button">Reserve</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
+            {{-- comment --}}
             <div class="mt-3">
                 <h5 class="fw-bold">Comments</h5>
                                                     {{-- dispaly comment --}}
@@ -185,14 +215,5 @@
         </div>
     </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
-<script>
-    // Get a reference to the div element
-    var div = document.getElementById('myDiv');
-    
-    // Hide the div after 5 seconds (5000 milliseconds)
-    setTimeout(function() {
-        div.style.display = 'none';
-    }, 5000);
-</script>
 </body>
 </html>

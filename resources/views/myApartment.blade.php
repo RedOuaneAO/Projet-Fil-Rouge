@@ -116,6 +116,7 @@
                                             <th scope="col">Image</th>
                                             <th scope="col">Title</th>
                                             <th scope="col">Address</th>
+                                            <th scope="col">City</th>
                                             <th scope="col">RoomsNumber</th>
                                             <th scope="col">Price</th>
                                             <th scope="col"></th>
@@ -127,6 +128,7 @@
                                                 <td><img src="/img/{{$apartment->images[0]->image}}" width="50"></td>
                                                 <td>{{ $apartment->title }}</td>
                                                 <td>{{ $apartment->address }}</td>
+                                                <td>{{ $apartment->city }}</td>
                                                 <td>{{ $apartment->roomsNumber }}</td>
                                                 <td>{{ $apartment->price }}</td>
                                                 <td>
