@@ -128,18 +128,22 @@
                         </div>
                         <div class="card-body">
                             <form action="">
-                                <div class="px-4 py-2">
-                                    <label for="">Check in </label>
-                                    <input type="date" class="form-control">
-                                </div>
-                                <div class="px-4 ">
-                                    <label for="">Check out </label>
-                                    <input type="date" class="form-control">
-                                </div>
-                                <hr>
-                                <div class="d-flex justify-content-center">
-                                    <button class="btn border-danger filter_button">Reserve</button>
-                                </div>
+                                    <div class="px-4 py-2">
+                                        <label for="">Check in </label>
+                                        <input type="date" class="form-control">
+                                    </div>
+                                    <div class="px-4 ">
+                                        <label for="">Check out </label>
+                                        <input type="date" class="form-control">
+                                    </div>
+                                    <div class="px-4 ">
+                                        <label for="">Guests </label>
+                                        <input type="number" class="form-control">
+                                    </div>
+                                    <hr>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="submit" class="btn border-danger filter_button">Reserve</button>
+                                    </div>
                             </form>
                         </div>
                     </div>
@@ -194,7 +198,7 @@
             <div class="my-5 d-flex justify-content-center">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d13587.777683918684!2d-8.0015554!3d31.6353721!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sma!4v1680789122763!5m2!1sfr!2sma" width="800" height="450" class="rounded shadow" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-            <div class="rounded">
+            <div class="rounded" id="HostedBy">
                 <h5 class="fw-bold">Hosted by</h5>
                 <div class="card mt-4 shadow-lg border-0" style="height: 70% ;">
                     <div class="card-body">
@@ -215,5 +219,8 @@
         </div>
     </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+<script>
+    let ;
+</script>
 </body>
 </html>

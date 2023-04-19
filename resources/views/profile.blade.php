@@ -74,13 +74,23 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                                <img class="rounded-circle mt-5" width="100px" src="./img/face.jpg">
+                                <div>
+                                    <div class="mb-3 img w-25 w-100">
+                                        <img class="rounded-circle mt-5" id="image" width="100px" src="./img/face.jpg">
+                                        <input type="file" id="imgInput" name="img"  style="display: none;" class="@error('img') is-invalid @enderror"/>
+                                        @error('img')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
                                 <span class="font-weight-bold my-2 fw-bold">{{Auth::user()->name}}</span>
                                 <span class="text-black-50">{{Auth::user()->email}}</span>
                             </div>
                         </div>
                         <div class="col-md-5">
-                            <div class="p-3 py-5">
+                            <div class="p-3 pt-5">
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                     <h4 class="text-right">Profile Settings</h4>
                                 </div>
@@ -93,19 +103,16 @@
                                         <label>Gender</label>
                                         <select class="form-select">
                                             <option value="" disabled selected>Select</option>
-                                            <option value="">Male</option>
-                                            <option value="">Female</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-md-12"><label>Phone Number</label><input type="tel" class="form-control" placeholder="Add your Phone Number"></div>
                                     <div class="col-md-12"><label>Email</label><input type="email" class="form-control" value="{{Auth::user()->email}}"></div>
-                                    <div class="col-md-12"><label>Password</label><input type="password" class="form-control"></div>
-                                    <div class="col-md-12"><label>Address</label><input type="password" class="form-control"></div>
-                                </div>
-                                <div class="mt-5 text-center">
-                                    <button class="btn btn-primary" type="button">Save Profile</button>
+                                    <div class="col-md-12"><label>New Password</label><input type="password" class="form-control"></div>
+                                    <div class="col-md-12"><label>Confirm Password</label><input type="password" class="form-control"></div>
                                 </div>
                             </div>
                         </div>
@@ -116,14 +123,17 @@
                                     <span class="border px-3 p-1 add-experience">Host</span>
                                 </div><br>
                                 <div class="col-md-12">
-                                    <label>Experience in Designing</label>
+                                    <label>Address</label>
                                     <input type="text" class="form-control">
                                 </div> <br>
                                 <div class="col-md-12">
-                                    <label>Additional Details</label>
+                                    <label>About Me</label>
                                     <input type="text" class="form-control">
                                 </div>
                             </div>
+                        </div>
+                        <div class="my-2 text-center">
+                            <button class="btn btn-primary" type="button">Save Profile</button>
                         </div>
                     </div>
                 </div>
@@ -131,5 +141,26 @@
         </div>
     </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+<script>
+    let image = document.getElementById('image');
+    let imgInput = document.getElementById('imgInput')
+    image.addEventListener('click', function(){
+        imgInput.click()
+    })
+    // Add a change event listener to the input
+    imgInput.addEventListener('change', function() {
+        // Get the selected file from the input
+        let file = imgInput.files[0];
+        // Create a new FileReader object
+        let reader = new FileReader();
+        // Set the onload function of the reader
+        reader.onload = function() {
+        // Set the source of the image to the data URL
+        image.src = reader.result;
+        }
+        // Read the selected file as a data URL
+        reader.readAsDataURL(file);
+    });
+</script>
 </body>
 </html>

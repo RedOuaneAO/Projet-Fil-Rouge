@@ -31,6 +31,9 @@ Route::get('/adminDash', function () {
 Route::get('/profile', function () {
     return view('profile');
 })->name('profile');
+Route::get('/bookingRequest', function () {
+    return view('bookingRequest');
+})->name('bookingRequest');
 
 Route::post('/register', [AuthController::class , 'register'])->name('regi');
 Route::post('/login', [AuthController::class , 'login'])->name('logi');
