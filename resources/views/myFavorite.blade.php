@@ -107,7 +107,7 @@
                         @foreach ($Apartments as $apartment)
                             <a href="/apartmentDetails/{{$apartment->id}}" class="text-decoration-none">
                                 <div class=" mb-4 shadow rounded">
-                                    <div class="card" style="width: 17rem;">
+                                    <div class="card" style="width: 15rem;">
                                         <div id="{{'swipe'.$counter}}" class="carousel slide">  {{--data-bs-ride="carousel"--}}
                                             <div class="carousel-inner">
                                                 @foreach ($apartment->images as $image)
@@ -118,17 +118,18 @@
                                             </div>
                                             <button class="carousel-control-prev" type="button" data-bs-target="{{'#swipe'.$counter}}" data-bs-slide="prev">
                                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                {{-- <span class="visually-hidden">Previous</span> --}}
                                             </button>
                                             <button class="carousel-control-next" type="button" data-bs-target="{{'#swipe'.$counter}}" data-bs-slide="next">
                                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                {{-- <span class="visually-hidden">Next</span> --}}
                                             </button>
                                         </div>
                                         <div class="card-body">
-                                            <h5 class="card-title fw-bold"  style="font-size: 18px;">{{ $apartment->title }}</h5>
+                                            <div class="d-flex justify-content-between">
+                                                <h5 class="card-title fw-bold"  style="font-size: 18px;">{{ $apartment->title }}</h5>
+                                                    <i class="bi bi-heart-fill"></i>
+                                            </div>
                                             <div class="d-flex flex-column">
-                                                <p class="card-text text-secondary mb-0">{{ $apartment->roomsNumber }}</p>
+                                                <p class="card-text mb-0">{{ $apartment->roomsNumber }} <span class="text-secondary">Rooms</span></p>
                                                 <p class="card-text text-secondary my-2">{{ $apartment->address }}</p>
                                                 <p><span class="fw-bold me-2">{{ $apartment->price }} DH</span>par nuit</p>
                                             </div>

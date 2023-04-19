@@ -123,7 +123,12 @@
                                             </button>
                                         </div>
                                         <div class="card-body">
-                                            <h5 class="card-title fw-bold"  style="font-size: 18px;">{{ $apartment->title }}</h5>
+                                            <div class="d-flex justify-content-between">
+                                                <h5 class="card-title fw-bold"  style="font-size: 18px;">{{ $apartment->title }}</h5>
+                                                @if(App\Http\Controllers\ApartmentController::checkFavorite($apartment->id))
+                                                    <i class="bi bi-heart-fill"></i>
+                                                @endif
+                                            </div>
                                             <div class="d-flex flex-column">
                                                 <p class="card-text fw-bold mb-0">{{ $apartment->roomsNumber }} <span class="text-secondary">Rooms</span></p>
                                                 <p class="card-text text-secondary my-2">{{ $apartment->city . ' - ' . $apartment->address }}</p>
