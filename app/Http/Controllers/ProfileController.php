@@ -11,15 +11,19 @@ class ProfileController extends Controller
     public function updateProfile(Request $Request, $id){
         // return $Request;
         $user=User::find($id);
-        // return $user;
-        $image = $Request->file('image');
-        $filename = $image->getClientOriginalName();
-        $image->move(public_path('img'), $filename);
+        return $Request;
+        if($Request->hasFile('image')){
+            $image = $Request->file('image');
+            $filename = $image->getClientOriginalName();
+            $image->move(public_path('img'), $filename);
+            $user->image=$filename;
+            $user->update();
+        }
         $user->update([
             'name'=> $Request->name,
             'gender'=> $Request->gender,
-            'image'=> $Request->image,
             'phone'=> $Request->phone,
+            'email'=> $Request->email,
         ]);
         return back();
     }

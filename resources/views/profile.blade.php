@@ -18,7 +18,9 @@
                         <span class="text-danger">It</span>
                     </a>
                     <div class="d-flex flex-column mx-auto my-3 d-none d-sm-inline">
-                        <img src="./img/face.jpg" width="80px" class="rounded-circle" alt="avatar image">
+                        <div class="rounded-circle  overflow-hidden" style="width: 80px; height:80px;">
+                            <img class="w-100" src="/img/{{Auth::user()->image}}">
+                        </div>
                         <div class="d-flex flex-column text-black">
                             <span class="fw-bold">{{Auth::user()->name}}</span>
                             <span class="text-secondary" style="font-size: 12px">{{Auth::user()->email}}</span>
@@ -26,40 +28,40 @@
                     </div>
                     <ul class="nav flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start">
                         <li class="nav-item">
-                            <a href="{{route('apartmentsListdisplay')}}" class="nav-link px-0 text-danger">
+                            <a href="{{route('apartmentsListdisplay')}}" class="nav-link px-0 text-black">
                                 <i class="bi bi-house"></i>
                                 <span class="ms-1 d-none d-sm-inline">Apartments</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('adminDash')}}" class="nav-link px-0 text-danger">
+                            <a href="{{route('adminDash')}}" class="nav-link px-0 text-black">
                                 <i class="bi bi-speedometer2"></i>
                                 <span class="ms-1 d-none d-sm-inline">Dashboard</span> 
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('profile')}}" class="nav-link px-0 text-danger">
+                            <a href="{{route('profile')}}" class="nav-link px-0 text-black">
                                 <i class="bi bi-person-circle"></i>
                                 <span class="ms-1 d-none d-sm-inline">Profile</span></a>
                         </li>
                         <li>
-                            <a href="{{route('index')}}" class="nav-link px-0 text-danger">
+                            <a href="{{route('index')}}" class="nav-link px-0 text-black">
                                 <i class="bi bi-plus-circle"></i>
                                 <span class="ms-1 d-none d-sm-inline">Add Apartment</span>
                             </a>
                         </li>
                         <li>
-                            <a href="/myFavorite/{{Auth::user()->id}}" class="nav-link px-0 text-danger">
+                            <a href="/myFavorite/{{Auth::user()->id}}" class="nav-link px-0 text-black">
                                 <i class="bi bi-heart"></i>
                                 <span class="ms-1 d-none d-sm-inline">Favorite</span> </a>
                         </li>
                         <li>
-                            <a href="/myApartment/{{Auth::user()->id}}" class="nav-link px-0 text-danger">
+                            <a href="/myApartment/{{Auth::user()->id}}" class="nav-link px-0 text-black">
                                 <i class="bi bi-house-door"></i>
                                 <span class="ms-1 d-none d-sm-inline">My apartments</span> </a>
                         </li>
                         <li>
-                            <a href="/logout" class="nav-link px-0 text-danger">
+                            <a href="/logout" class="nav-link px-0 text-black">
                                 <i class="bi bi-box-arrow-left"></i>
                                 <span class="ms-1 d-none d-sm-inline">Logout</span> </a>
                         </li>
@@ -75,11 +77,11 @@
                         <div class="col-md-3">
                         <form action="updateProfile/{{Auth::user()->id}}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            @method('PUT')
+                            @method('put')
                             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                                 <div>
-                                    <div class="mb-3 img w-25 w-100">
-                                        <img class="rounded-circle mt-5" id="image" width="100px" src="./img/face.jpg">
+                                    <div class="mb-2 img rounded-circle overflow-hidden" style="width: 100px; height:100px;">
+                                        <img class="w-100" id="image"  src="/img/{{Auth::user()->image}}">
                                         <input type="file" id="imgInput" name="image"  style="display: none;" class="@error('img') is-invalid @enderror"/>
                                         @error('img')
                                             <span class="invalid-feedback" role="alert">
@@ -106,20 +108,15 @@
                                         <label>Gender</label>
                                         <select class="form-select" name="gender">
                                             <option value="" disabled selected>Select</option>
-                                            @if(Auth::user()->gender == 'Male')
-                                                <option  selected>{{Auth::user()->gender}}</option>
-                                                <option value="Female">Female</option>
-                                            @else
-                                                <option value="Male">Male</option>
-                                                <option  selected>{{Auth::user()->gender}}</option>
-                                            @endif
+                                            <option value="Male" {{ Auth::user()->gender == 'Male' ? 'selected' : '' }}>Male</option>
+                                            <option value="Female" {{ Auth::user()->gender == 'Female' ? 'selected' : '' }}>Female</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row mt-3">
-                                    <div class="col-md-12"><label>Phone Number</label><input type="tel" name="phone" class="form-control" placeholder="Add your Phone Number"></div>
+                                    <div class="col-md-12"><label>Phone Number</label><input type="tel" name="phone" class="form-control" value="{{Auth::user()->phone}}" placeholder="Add your Phone Number"></div>
                                     <div class="col-md-12"><label>Email</label><input type="email" name="email" class="form-control" value="{{Auth::user()->email}}"></div>
-                                    <div class="col-md-12"><label>New Password</label><input type="password" name="password" class="form-control"></div>
+                                    <div class="col-md-12"><label>New Password</label><input type="password" name="New_password" class="form-control"></div>
                                     <div class="col-md-12"><label>Confirm Password</label><input type="password" name="pass_confirm" class="form-control"></div>
                                 </div>
                             </div>
@@ -132,11 +129,11 @@
                                 </div><br>
                                 <div class="col-md-12">
                                     <label>Address</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="address">
                                 </div> <br>
                                 <div class="col-md-12">
                                     <label>About Me</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="about_me">
                                 </div>
                             </div>
                         </div>

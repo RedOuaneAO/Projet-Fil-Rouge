@@ -87,7 +87,7 @@
             <div class="row">
                 <div class="col-12 col-sm-8">
                     <div class="d-flex mt-5 justify-content-between">
-                        <div class=""><h4 class="fw-bold">perfect apartment in marrakech</h4></div>
+                        <div class=""><h4 class="fw-bold">this apaprtment is hosted by</h4></div>
                         <div class=""><img src="/img/face.jpg" width="50" class="rounded-circle" alt=""></div>
                     </div>
                     <div>
@@ -159,7 +159,7 @@
                             <div class="card-body ">
                                 <div class="d-flex justify-content-between">
                                     <div class="d-flex">
-                                        <img class="rounded-circle" width="50" height="50" src="/img/face.jpg" alt="User avatar">
+                                        <img class="rounded-circle" width="50" height="50" src="/img/{{$comment->user->image}}" alt="User avatar">
                                         <div class="ms-3">
                                             <h6 class="fw-bold">{{$comment->user->name}}</h6>
                                             <p class="text-secondary">août 2019</p>

@@ -18,7 +18,9 @@
                         <span class="text-danger">It</span>
                     </a>
                     <div class="d-flex flex-column mx-auto my-3 d-none d-sm-inline">
-                        <img src="./img/face.jpg" width="80px" class="rounded-circle" alt="avatar image">
+                        <div class="rounded-circle  overflow-hidden" style="width: 80px; height:80px;">
+                            <img class="w-100" id="image"  src="/img/{{Auth::user()->image}}">
+                        </div>
                         <div class="d-flex flex-column text-black">
                             <span class="fw-bold">{{Auth::user()->name}}</span>
                             <span class="text-secondary" style="font-size: 12px">{{Auth::user()->email}}</span>
@@ -26,40 +28,40 @@
                     </div>
                     <ul class="nav flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start">
                         <li class="nav-item">
-                            <a href="#" class="nav-link px-0 text-danger">
+                            <a href="#" class="nav-link px-0 text-black">
                                 <i class="bi bi-house"></i>
                                 <span class="ms-1 d-none d-sm-inline">Apartments</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('adminDash')}}" class="nav-link px-0 text-danger">
+                            <a href="{{route('adminDash')}}" class="nav-link px-0 text-black">
                                 <i class="bi bi-speedometer2"></i>
                                 <span class="ms-1 d-none d-sm-inline">Dashboard</span> 
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('profile')}}" class="nav-link px-0 text-danger">
+                            <a href="{{route('profile')}}" class="nav-link px-0 text-black">
                                 <i class="bi bi-person-circle"></i>
                                 <span class="ms-1 d-none d-sm-inline">Profile</span></a>
                         </li>
                         <li>
-                            <a href="{{route('index')}}" class="nav-link px-0 text-danger">
+                            <a href="{{route('index')}}" class="nav-link px-0 text-black">
                                 <i class="bi bi-plus-circle"></i>
                                 <span class="ms-1 d-none d-sm-inline">Add Apartment</span>
                             </a>
                         </li>
                         <li>
-                            <a href="/myFavorite/{{Auth::user()->id}}" class="nav-link px-0 text-danger">
+                            <a href="/myFavorite/{{Auth::user()->id}}" class="nav-link px-0 text-black">
                                 <i class="bi bi-heart"></i>
                                 <span class="ms-1 d-none d-sm-inline">Favorite</span> </a>
                         </li>
                         <li>
-                            <a href="/myApartment/{{Auth::user()->id}}" class="nav-link px-0 text-danger">
+                            <a href="/myApartment/{{Auth::user()->id}}" class="nav-link px-0 text-black">
                                 <i class="bi bi-house-door"></i>
                                 <span class="ms-1 d-none d-sm-inline">My apartments</span> </a>
                         </li>
                         <li>
-                            <a href="/logout" class="nav-link px-0 text-danger">
+                            <a href="/logout" class="nav-link px-0 text-black">
                                 <i class="bi bi-box-arrow-left"></i>
                                 <span class="ms-1 d-none d-sm-inline">Logout</span> </a>
                         </li>
