@@ -48,6 +48,7 @@ class ApartmentController extends Controller
     public function displayAprtmentDetails($id){
         $apartDetails= Apartment::where('id',$id)->with('images')->get();
         $apartComments=Comment::where('apartment_id',$id)->with('user')->orderBy('id','DESC')->get();
+        // return $apartComments;
         return view('/apartmentDetails', compact('apartDetails' , 'apartComments'));
     }
 

@@ -159,10 +159,12 @@
                             <div class="card-body ">
                                 <div class="d-flex justify-content-between">
                                     <div class="d-flex">
-                                        <img class="rounded-circle" width="50" height="50" src="/img/{{$comment->user->image}}" alt="User avatar">
+                                        <div class="rounded-circle  overflow-hidden" style="width: 40px; height:40px;">
+                                            <img class="w-100" id="image"  src="/img/{{$comment->user->image}}">
+                                        </div>
                                         <div class="ms-3">
-                                            <h6 class="fw-bold">{{$comment->user->name}}</h6>
-                                            <p class="text-secondary">août 2019</p>
+                                            <h6 class="fw-bold" style="font-size: 14px">{{$comment->user->name}}</h6>
+                                            <p class="text-secondary" style="font-size: 12px">{{substr($comment->created_at,0,10)}}</p>
                                         </div>
                                     </div>
                                     @if($comment->user_id == Auth::user()->id)

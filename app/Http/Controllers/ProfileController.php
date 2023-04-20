@@ -9,9 +9,8 @@ class ProfileController extends Controller
 {
     //
     public function updateProfile(Request $Request, $id){
-        // return $Request;
         $user=User::find($id);
-        return $Request;
+        // dd($Request->name) ;
         if($Request->hasFile('image')){
             $image = $Request->file('image');
             $filename = $image->getClientOriginalName();
