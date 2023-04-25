@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ApartmentController;
@@ -26,9 +27,7 @@ Route::get('/register', function () {
 Route::get('/login', function () {
     return view('login');
 })->name('login');
-Route::get('/adminDash', function () {
-    return view('adminDash');
-})->name('adminDash');
+
 Route::get('/profile', function () {
     return view('profile');
 })->name('profile');
@@ -53,4 +52,8 @@ Route::get('/myApartment/{id}', [ApartmentController::class , 'myApartment']);
 Route::post('/deleteApartment/{id}', [ApartmentController::class , 'deleteApartment']);
 Route::post('/updateApartmentView/{id}', [ApartmentController::class , 'updateApartmentView']);
 Route::put('/updateApartment/{id}', [ApartmentController::class , 'updateApartment'])->name('updateApart');
-Route::post('/', [ApartmentController::class , 'filter'])->name('filter');
+Route::post('/apartmentsList', [ApartmentController::class , 'filter'])->name('filter');
+
+
+// ----------admindash
+Route::get('/adminDash',[AdminController::class , 'getdata'])->name('adminDash');

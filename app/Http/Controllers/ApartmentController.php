@@ -133,9 +133,13 @@ class ApartmentController extends Controller
         if($Request->maxPrice){
             $query->where('price','<',$Request->maxPrice);
         }
-        return $query;
         $Apartments=$query->with('images')->get();
-        return view('apartmentsList', compact('Apartments'));
+        if ($Apartments->count() === 0) {
+            $message = 'No apartments found.';
+            return view('apartmentsList', compact('message'));
+        } else {
+            return view('apartmentsList', compact('Apartments'));
+        }
     }
 }
 
