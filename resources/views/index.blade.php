@@ -151,6 +151,10 @@
                                             <input type="checkbox" class="me-2">
                                             <span>air conditioner</span>
                                         </div>
+                                        <div>
+                                            <input type="checkbox" class="me-2">
+                                            <span>accepted animals</span>
+                                        </div>
                                     </div>
                                 </div> <br>
                             </div>

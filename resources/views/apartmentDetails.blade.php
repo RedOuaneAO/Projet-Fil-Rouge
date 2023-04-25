@@ -130,15 +130,15 @@
                             <form action="">
                                     <div class="px-4 py-2">
                                         <label for="">Check in </label>
-                                        <input type="date" class="form-control">
+                                        <input type="date" name="check_in" class="form-control">
                                     </div>
                                     <div class="px-4 ">
                                         <label for="">Check out </label>
-                                        <input type="date" class="form-control">
+                                        <input type="date" name="checkout" class="form-control">
                                     </div>
                                     <div class="px-4 ">
                                         <label for="">Guests </label>
-                                        <input type="number" class="form-control">
+                                        <input type="number" name="guestNumber" class="form-control">
                                     </div>
                                     <hr>
                                     <div class="d-flex justify-content-center">
@@ -205,10 +205,12 @@
                 <div class="card mt-4 shadow-lg border-0" style="height: 70% ;">
                     <div class="card-body">
                         <div class="d-flex">
-                            <img class="rounded-circle" width="50" height="50" src="/img/face1.jpg" alt="User avatar">
+                            <div class="rounded-circle  overflow-hidden" style="width: 50px; height:50px;">
+                                <img class="w-100" id="image"  src="/img/{{$apartDetails[0]->user->image}}">
+                            </div>
                             <div class="ms-3">
-                                <h6 class="fw-bold">Owner Name</h6>
-                                <p class="text-secondary"></p>
+                                <h6 class="fw-bold">{{$apartDetails[0]->user->name}}</h6>
+                                <p class="text-secondary small">{{$apartDetails[0]->user->email}}</p>
                             </div>
                         </div>
                         <div>

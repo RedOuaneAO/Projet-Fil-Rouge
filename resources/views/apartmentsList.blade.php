@@ -73,7 +73,7 @@
             <div class="col py-3 overflow-x-hidden overflow-y-scroll" style="height: 100vh">
                 <div class="mx-auto sticky-top bg-white bg-opacity-75 p-3 rounded" style="width: 60%">
                     <div class="mb-3">
-                        <input type="text" class="form-control border-secondary" placeholder="Search">
+                        <input type="text" class="form-control border-secondary" id="search-input" placeholder="Search">
                     </div>
                     <div class="">
                         <button class="btn btn-danger form-control" type="button" data-bs-toggle="collapse" data-bs-target="#Filter">
@@ -81,17 +81,18 @@
                         </button>
                         <div class="collapse border-secondary" id="Filter">
                             <div class="card card-body">
-                                    <form class="row">
+                                    <form class="row" method="POST" action="{{route('filter')}}">
+                                        @csrf
                                         <div class="col-12">
                                             <label for="price-from" class="fw-bold">Price from:</label>
-                                            <input type="number" class="form-control" id="price-from" placeholder="Enter minimum price">
+                                            <input type="number" name="minPrice" class="form-control" id="price-from" placeholder="Enter minimum price">
                                         </div>
                                         <div class="col-12">
                                             <label for="price-to" class="fw-bold">Price to:</label>
-                                            <input type="number" class="form-control" id="price-to" placeholder="Enter maximum price">
+                                            <input type="number" name="maxPrice" class="form-control" id="price-to" placeholder="Enter maximum price">
                                         </div>
                                         <div class="d-flex justify-content-center mt-2 col-12">
-                                            <button type="button" class="btn border-danger  filter_button" onclick="filterByPrice()"><i class="bi bi-funnel"></i> Filter</button>
+                                            <button type="submit" class="btn border-danger filter_button"><i class="bi bi-funnel"></i> Filter</button>
                                         </div>
                                     </form>
                             </div>
@@ -101,7 +102,7 @@
                 @php
                     $counter =0;
                 @endphp
-                <div class=" mt-4 d-flex justify-content-evenly flex-wrap">
+                <div class=" mt-4 d-flex justify-content-evenly flex-wrap" id="cards">
                     @if(isset($message))
                         <p>{{ $message }}</p>
                     @else
@@ -132,8 +133,8 @@
                                                 @endif
                                             </div>
                                             <div class="d-flex flex-column">
-                                                <p class="card-text fw-bold mb-0">{{ $apartment->roomsNumber }} <span class="text-secondary">Rooms</span></p>
-                                                <p class="card-text text-secondary my-2">{{ $apartment->city . ' - ' . $apartment->address }}</p>
+                                                <p class="card-text fw-bold mb-0" style="font-size: 14px">{{ $apartment->roomsNumber }} <span class="text-secondary">Rooms</span></p>
+                                                <p class="card-text text-secondary my-2" style="font-size: 14px"><i class="bi bi-geo-alt text-danger"></i> {{ $apartment->city . ' - ' . $apartment->address }}</p>
                                                 <p><span class="fw-bold me-2">{{ $apartment->price }} DH</span>per night</p>
                                             </div>
                                         </div>
@@ -150,5 +151,16 @@
         </div>
     </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script>
+      $(document).ready(function() {
+        $('#search-input').on('keyup', function() {
+          var value = $(this).val().toLowerCase();
+          $('#cards a').filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+        });
+      });
+    </script>
 </body>
 </html>

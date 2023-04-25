@@ -46,9 +46,9 @@ class ApartmentController extends Controller
     }
 
     public function displayAprtmentDetails($id){
-        $apartDetails= Apartment::where('id',$id)->with('images')->get();
+        $apartDetails= Apartment::where('id',$id)->with('images')->with('user')->get();
         $apartComments=Comment::where('apartment_id',$id)->with('user')->orderBy('id','DESC')->get();
-        // return $apartComments;
+        // return $apartDetails;
         return view('/apartmentDetails', compact('apartDetails' , 'apartComments'));
     }
 
@@ -123,6 +123,19 @@ class ApartmentController extends Controller
     public static function checkFavorite($id){
         $favorite = DB::table('favorites')->where('apartment_id', $id)->where('user_id', Auth::user()->id)->get();
         return $favorite->isNotEmpty();
+    }
+
+    public function filter(Request $Request){
+        $query =Apartment::query();
+        if($Request->minPrice){
+            $query->where('price','>',$Request->minPrice);
+        }
+        if($Request->maxPrice){
+            $query->where('price','<',$Request->maxPrice);
+        }
+        return $query;
+        $Apartments=$query->with('images')->get();
+        return view('apartmentsList', compact('Apartments'));
     }
 }
 

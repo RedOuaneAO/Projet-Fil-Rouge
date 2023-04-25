@@ -131,8 +131,8 @@
                                                     <i class="bi bi-heart-fill"></i>
                                             </div>
                                             <div class="d-flex flex-column">
-                                                <p class="card-text mb-0">{{ $apartment->roomsNumber }} <span class="text-secondary">Rooms</span></p>
-                                                <p class="card-text text-secondary my-2">{{ $apartment->address }}</p>
+                                                <p class="card-text mb-0" style="font-size: 14px">{{ $apartment->roomsNumber }} <span class="text-secondary">Rooms</span></p>
+                                                <p class="card-text text-secondary my-2" style="font-size: 14px"><i class="bi bi-geo-alt text-danger"></i> {{$apartment->city .' - '. $apartment->address }}</p>
                                                 <p><span class="fw-bold me-2">{{ $apartment->price }} DH</span>par nuit</p>
                                             </div>
                                         </div>
