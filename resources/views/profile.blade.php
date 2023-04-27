@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"/>
-    <link rel="stylesheet" href="/css/style.css">
-    <title>Document</title>
-</head>
-<body>
+@extends('layouts.master')
+@section('title', 'profile')
+@section('content')
     <div class="container-fluid">
         <div class="row flex-nowrap">
             <div class="col-auto col-xl-2 px-sm-2 px-0 shadow" style="height: 100vh">
@@ -70,103 +61,73 @@
             </div>
 
                 {{-- -------------------------------content --------------------------------------}}
-            <div class="col py-3 overflow-x-hidden overflow-y-scroll" style="height: 100vh">
-                <div class="container shadow rounded bg-white border">
-                    <h5 class="fw-bold mt-3 ms-3">Profile</h5>
-                    <div class="row">
-                        <div class="col-md-3">
-                        <form action="updateProfile/{{Auth::user()->id}}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            @method('put')
-                            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                                <div>
-                                    <div class="mb-2 img rounded-circle overflow-hidden" style="width: 100px; height:100px;">
-                                        <img class="w-100" id="image"  src="/img/{{Auth::user()->image}}">
-                                        <input type="file" id="imgInput" name="image"  style="display: none;" class="@error('img') is-invalid @enderror"/>
-                                        @error('img')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                <div class="col py-3 overflow-x-hidden overflow-y-scroll" style="height: 100vh">
+                    <div class="container shadow rounded bg-white border">
+                        <h5 class="fw-bold mt-3 ms-3">Profile</h5>
+                            <form action="updateProfile/{{Auth::user()->id}}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                @method('put')
+                            <div class="d-md-flex justify-content-evenly my-5">
+                                <div class="col-md-5 shadow border rounded">
+                                    <div class="p-3 pt-5">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <h4 class="text-right">Profile Settings</h4>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col-md-6">
+                                                <label>User name</label>
+                                                <input type="text" name="name" class="form-control" value="{{Auth::user()->name}}">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Gender</label>
+                                                <select class="form-select" name="gender">
+                                                    <option value="" disabled selected>Select</option>
+                                                    <option value="Male" {{ Auth::user()->gender == 'Male' ? 'selected' : '' }}>Male</option>
+                                                    <option value="Female" {{ Auth::user()->gender == 'Female' ? 'selected' : '' }}>Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-md-12"><label>Phone Number</label><input type="tel" name="phone" class="form-control" value="{{Auth::user()->phone}}" placeholder="Add your Phone Number"></div>
+                                            <div class="col-md-12"><label>Email</label><input type="email" name="email" class="form-control" value="{{Auth::user()->email}}"></div>
+                                            <div class="col-md-12"><label>Cover</label><input type="file" id="imgInput" name="image"  class="form-control"/></div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="my-2 text-center">
+                                        <button class="btn btn-outline-danger" type="submit">Save Changes</button>
+                                    </div>
+                                </form>
+                                </div>
+                                <div class="col-md-5 mt-3 mt-md-0 shadow border rounded">
+                                    <div class="p-3 pt-5">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <h4 class="text-right">Password Update</h4>
+                                        </div>
+                                        <form action="updatePassword/{{Auth::user()->id}}" method="POST">
+                                            @method('put')
+                                            @csrf
+                                            <div class="col-md-12">
+                                                <label>Old Password</label>
+                                                <input type="password" class="form-control" name="old_password">
+                                            </div> <br>
+                                            <div class="col-md-12">
+                                                <label>New Password</label>
+                                                <input type="password" class="form-control" name="password">
+                                            </div> <br>
+                                            <div class="col-md-12">
+                                                <label>Confirm Password</label>
+                                                <input type="password" class="form-control" name="confirm_pass">
+                                            </div>
+                                            <div class="my-2 mb-0 text-center">
+                                                <button class="btn btn-outline-danger" type="submit">Save Changes</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
-                                <span class="font-weight-bold my-2 fw-bold">{{Auth::user()->name}}</span>
-                                <span class="text-black-50">{{Auth::user()->email}}</span>
-                            </div>
                         </div>
-                        <div class="col-md-5">
-                            <div class="p-3 pt-5">
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <h4 class="text-right">Profile Settings</h4>
-                                </div>
-                                <div class="row mt-2">
-                                    <div class="col-md-6">
-                                        <label>User name</label>
-                                        <input type="text" name="name" class="form-control" value="{{Auth::user()->name}}">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>Gender</label>
-                                        <select class="form-select" name="gender">
-                                            <option value="" disabled selected>Select</option>
-                                            <option value="Male" {{ Auth::user()->gender == 'Male' ? 'selected' : '' }}>Male</option>
-                                            <option value="Female" {{ Auth::user()->gender == 'Female' ? 'selected' : '' }}>Female</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row mt-3">
-                                    <div class="col-md-12"><label>Phone Number</label><input type="tel" name="phone" class="form-control" value="{{Auth::user()->phone}}" placeholder="Add your Phone Number"></div>
-                                    <div class="col-md-12"><label>Email</label><input type="email" name="email" class="form-control" value="{{Auth::user()->email}}"></div>
-                                    <div class="col-md-12"><label>New Password</label><input type="password" name="New_password" class="form-control"></div>
-                                    <div class="col-md-12"><label>Confirm Password</label><input type="password" name="pass_confirm" class="form-control"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="p-3 py-5">
-                                <div class="d-flex justify-content-between align-items-center experience">
-                                    <span>Role</span>
-                                    <span class="border px-3 p-1 add-experience">Host</span>
-                                </div><br>
-                                <div class="col-md-12">
-                                    <label>Address</label>
-                                    <input type="text" class="form-control" name="address">
-                                </div> <br>
-                                <div class="col-md-12">
-                                    <label>About Me</label>
-                                    <input type="text" class="form-control" name="about_me">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="my-2 text-center">
-                            <button class="btn btn-primary" type="submit">Save Profile</button>
-                        </div>
-                    </form>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
-<script>
-    let image = document.getElementById('image');
-    let imgInput = document.getElementById('imgInput')
-    image.addEventListener('click', function(){
-        imgInput.click()
-    })
-    // Add a change event listener to the input
-    imgInput.addEventListener('change', function() {
-        // Get the selected file from the input
-        let file = imgInput.files[0];
-        // Create a new FileReader object
-        let reader = new FileReader();
-        // Set the onload function of the reader
-        reader.onload = function() {
-        // Set the source of the image to the data URL
-        image.src = reader.result;
-        }
-        // Read the selected file as a data URL
-        reader.readAsDataURL(file);
-    });
-</script>
-</body>
-</html>
+@endsection

@@ -1,20 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"/>
-    <link rel="stylesheet" href="/css/style.css">
-    <title>Home</title>
-</head>
-<body>
+@extends('layouts.master')
+@section('title', 'profile')
+@section('content')
     <div style="">
         <div class="justify-content-between d-flex p-2">
-            <a href="{{route('Home')}}" class="text-decoration-none">
+            <a href="{{route('Home')}}" class="text-decoration-none ms-5">
                 <h2 class="text-danger"><span class="text-dark">Rent</span>It</h2>
             </a>
-            <a class="btn btn-danger p-2">Login</a>
     </div>
     @if ($message = Session::get('success')) 
         <div class="alert alert-success d-flex m-auto" style="width: 95%;">
@@ -42,18 +33,17 @@
                         <label  class="fw-bold">Password</label>
                         <input type="password" name="password" class="form-control" placeholder="Password">
                     </div>
-                    {{-- <div class="">
-                        <label for="" class="fw-bold">comfiermPassword</label>
+                    <div class="">
+                        <label for="" class="fw-bold">confirm Password</label>
                         <input type="password" name="password" class="form-control" placeholder="Password">
-                    </div> --}}
+                    </div>
                     <button type="submit" class="btn btn-primary form-control my-3 fw-bold">Sign Up</button>
-                    <button class="btn bg-white form-control mb-3 fw-bold"><i class="bi bi-google text-danger me-3"></i>Sign Up With Google</button>
-                    <a href="{{route('login')}}" class="">I aleardy have account</a>
+                    <div class="mb-3">
+                        <a href="{{route('login')}}" class="">I aleardy have account!</a>
+                    </div>
                 </form>
             </div>
         </div>
         {{-- end of register --}}
     </section>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
-</body>
-</html>
+@endsection

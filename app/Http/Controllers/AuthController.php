@@ -11,29 +11,29 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     
-    public function register(Request $request)
+    public function register(Request $Request)
     {
-        $request->validate([
+        $Request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6',
         ]);
 
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'name' => $Request->name,
+            'email' => $Request->email,
+            'password' => Hash::make($Request->password),
         ]);
         return redirect('/register')->with('success','Your account has been created successfuly');  
         // $token = Auth::login($user);
     }
-    public function login(Request $request)
+    public function login(Request $Request)
     {
-        $request->validate([
+        $Request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
-        $credentials = $request->only('email', 'password');
+        $credentials = $Request->only('email', 'password');
 
         $token = Auth::attempt($credentials);
         if (!$token) {
@@ -43,8 +43,8 @@ class AuthController extends Controller
     }
     public function logout() {
         Auth::logout(); 
-        // $request->session()->invalidate(); 
-        // $request->session()->regenerateToken();
+        // $Request->session()->invalidate(); 
+        // $Request->session()->regenerateToken();
         return redirect('/'); 
     }
     public function get(){

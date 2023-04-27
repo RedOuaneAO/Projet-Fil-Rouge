@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"/>
-    <link rel="stylesheet" href="/css/style.css">
-    <title>Document</title>
-</head>
-<body>
+@extends('layouts.master')
+@section('title', 'profile')
+@section('content')
     <div class="container-fluid">
         <div class="row flex-nowrap">
             <div class="col-auto col-xl-2 px-sm-3 px-0 shadow" style="height: 100vh">
@@ -72,39 +63,16 @@
                 {{-- -------------------------------content --------------------------------------}}
 
             <div class="col py-3 overflow-x-hidden overflow-y-scroll" style="height: 100vh">
-                <div class="mx-auto sticky-top bg-white bg-opacity-75 p-3 rounded" style="width: 60%">
-                    <div class="mb-3">
-                        <input type="text" class="form-control border-secondary" placeholder="Search">
-                    </div>
-                    <div class="">
-                        <button class="btn btn-danger form-control" type="button" data-bs-toggle="collapse" data-bs-target="#Filter">
-                            Filter By Price
-                        </button>
-                        <div class="collapse border-secondary" id="Filter">
-                            <div class="card card-body">
-                                    <form class="row">
-                                        <div class="col-12">
-                                            <label for="price-from" class="fw-bold">Price from:</label>
-                                            <input type="number" class="form-control" id="price-from" placeholder="Enter minimum price">
-                                        </div>
-                                        <div class="col-12">
-                                            <label for="price-to" class="fw-bold">Price to:</label>
-                                            <input type="number" class="form-control" id="price-to" placeholder="Enter maximum price">
-                                        </div>
-                                        <div class="d-flex justify-content-center mt-2 col-12">
-                                            <button type="button" class="btn border-danger  filter_button" onclick="filterByPrice()"><i class="bi bi-funnel"></i> Filter</button>
-                                        </div>
-                                    </form>
-                            </div>
-                        </div>
+                <div class="mx-auto p-3">
+                    <div class="d-flex justify-content-center">
+                        <h1>Welcome</h1>
                     </div>
                 </div>
-                @php
-                    $counter =0;
-                @endphp
                 <div class=" mt-4">
                     @if(isset($message))
+                    <div class="d-flex justify-content-evenly">
                         <p>{{ $message }}</p>
+                    </div>
                     @else
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 ">
@@ -134,10 +102,7 @@
                                                 <td>{{ $apartment->roomsNumber }}</td>
                                                 <td>{{ $apartment->price }}</td>
                                                 <td>
-                                                    {{-- <form action="/deleteApartment/{{$apartment->id}}" method="POST">
-                                                        @csrf  --}}
-                                                        <a href="/deleteApartment/{{$apartment->id}}" class="btn"><i class="bi bi-x-circle text-danger"></i></a>
-                                                    {{-- </form> --}}
+                                                    <a href="/deleteApartment/{{$apartment->id}}" class="btn"><i class="bi bi-x-circle text-danger"></i></a>
                                                     <form action="/updateApartmentView/{{$apartment->id}}" method="POST">
                                                         @csrf 
                                                         <button class="btn"><i class="bi bi-pencil-square text-success"></i></button>
@@ -150,11 +115,50 @@
                             </div>
                         </div>
                     </div>
-                    @endif
+                    {{-- <div class="card shadow mb-4">
+                        <div class="card-header py-3 ">
+                            <h6 class="m-0 fw-bold text-primary">Reserved Apartments</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped border">
+                                    <thead class="bg-secondary bg-opacity-25">
+                                        <tr>
+                                            <th scope="col">Image</th>
+                                            <th scope="col">Title</th>
+                                            <th scope="col">Address</th>
+                                            <th scope="col">City</th>
+                                            <th scope="col">RoomsNumber</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($Apartments as $apartment)
+                                            <tr>
+                                                <td><img src="/img/{{$apartment->images[0]->image}}" width="50"></td>
+                                                <td>{{ $apartment->title }}</td>
+                                                <td>{{ $apartment->address }}</td>
+                                                <td>{{ $apartment->city }}</td>
+                                                <td>{{ $apartment->roomsNumber }}</td>
+                                                <td>{{ $apartment->price }}</td>
+                                                <td>
+                                                    <a href="/deleteApartment/{{$apartment->id}}" class="btn"><i class="bi bi-x-circle text-danger"></i></a>
+                                                    <form action="/updateApartmentView/{{$apartment->id}}" method="POST">
+                                                        @csrf 
+                                                        <button class="btn"><i class="bi bi-pencil-square text-success"></i></button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach 
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div> --}}
+                @endif
                 </div>
             </div>
         </div>
     </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
-</body>
-</html>
+@endsection

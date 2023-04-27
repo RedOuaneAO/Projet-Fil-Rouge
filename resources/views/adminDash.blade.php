@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"/>
-    <link rel="stylesheet" href="/css/style.css">
-    <title>Document</title>
-</head>
-<body>
+@extends('layouts.master')
+@section('title', 'profile')
+@section('content')
     <div class="container-fluid">
         <div class="row flex-nowrap">
             <div class="col-auto col-xl-2 px-sm-2 px-0 shadow" style="height: 100vh">
@@ -86,7 +77,7 @@
                             <div class="container-fluid">
                                 <!-- Page Heading -->
                                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                                    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                                    <h3 class="mb-0 text-secondary">Dashboard</h3>
                                     
                                 </div>
 
@@ -96,11 +87,11 @@
                                     <div class="col-xl-3 col-md-6 mb-4">
                                         <div class="card border-left-primary shadow h-100 py-2">
                                             <div class="card-body">
-                                                <div class="row no-gutters align-items-center">
+                                                <div class="row align-items-center">
                                                     <div class="col mr-2">
-                                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                            Users</div>
-                                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{App\Http\Controllers\AdminController::countUsers()}}</div>
+                                                        <div class="text-xs fw-bold text-primary mb-1">
+                                                            USERS</div>
+                                                        <h5 class="mb-0 fw-bold text-secondary">{{App\Http\Controllers\AdminController::countUsers()}}</h5>
                                                     </div>
                                                     <div class="col-auto">
                                                         <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -114,11 +105,11 @@
                                     <div class="col-xl-3 col-md-6 mb-4">
                                         <div class="card border-left-success shadow h-100 py-2">
                                             <div class="card-body">
-                                                <div class="row no-gutters align-items-center">
+                                                <div class="row align-items-center">
                                                     <div class="col mr-2">
-                                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                        <div class="fw-bold text-success mb-1">
                                                             APARTMENTS</div>
-                                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{App\Http\Controllers\AdminController::countApartments()}}</div>
+                                                        <h5 class="mb-0 fw-bold text-secondary">{{App\Http\Controllers\AdminController::countApartments()}}</h5>
                                                     </div>
                                                     <div class="col-auto">
                                                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -132,19 +123,18 @@
                                     <div class="col-xl-3 col-md-6 mb-4">
                                         <div class="card border-left-info shadow h-100 py-2">
                                             <div class="card-body">
-                                                <div class="row no-gutters align-items-center">
+                                                <div class="row align-items-center">
                                                     <div class="col mr-2">
-                                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
+                                                        <div class="text-xs fw-bold text-info text-uppercase mb-1">Tasks
                                                         </div>
-                                                        <div class="row no-gutters align-items-center">
+                                                        <div class="row align-items-center">
                                                             <div class="col-auto">
-                                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                                                <h5 class="mb-0 mr-3 fw-bold text-secondary">50%</h5>
                                                             </div>
                                                             <div class="col">
-                                                                <div class="progress progress-sm mr-2">
-                                                                    <div class="progress-bar bg-info" role="progressbar"
-                                                                        style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                                        aria-valuemax="100"></div>
+                                                                <div class="progress progress-sm">
+                                                                    <div class="progress-bar bg-info" style="width: 50%">
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -161,11 +151,11 @@
                                     <div class="col-xl-3 col-md-6 mb-4">
                                         <div class="card border-left-warning shadow h-100 py-2">
                                             <div class="card-body">
-                                                <div class="row no-gutters align-items-center">
+                                                <div class="row align-items-center">
                                                     <div class="col mr-2">
-                                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                        <div class="text-xs fw-bold text-warning text-uppercase mb-1">
                                                             Pending Requests</div>
-                                                        <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                                        <h5 class=" mb-0 fw-bold text-gray-800">18</h5>
                                                     </div>
                                                     <div class="col-auto">
                                                         <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -181,7 +171,7 @@
                                 <div class="row">
 
                                     <!-- Area Chart -->
-                                    <div class="col-xl-7 ">
+                                    <div class="col-xl-8 ">
                                         <div class="card shadow mb-4">
                                             <!-- Card Header - Dropdown -->
                                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -219,7 +209,7 @@
                                     </div>
 
                                     <!-- Pie Chart -->
-                                    <div class="col-xl-5">
+                                    <div class="col-xl-4">
                                         <div class="card shadow mb-4">
                                             <!-- Card Header - Dropdown -->
                                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -257,36 +247,6 @@
                                                 <h6 class="m-0 font-weight-bold text-primary">Reserved Apartments</h6>
                                             </div>
                                             <div class="card-body">
-                                                {{-- <h4 class="small font-weight-bold">Server Migration <span
-                                                        class="float-right">20%</span></h4>
-                                                <div class="progress mb-4">
-                                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 20%"
-                                                        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                                <h4 class="small font-weight-bold">Sales Tracking <span
-                                                        class="float-right">40%</span></h4>
-                                                <div class="progress mb-4">
-                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
-                                                        aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                                <h4 class="small font-weight-bold">Customer Database <span
-                                                        class="float-right">60%</span></h4>
-                                                <div class="progress mb-4">
-                                                    <div class="progress-bar" role="progressbar" style="width: 60%"
-                                                        aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                                <h4 class="small font-weight-bold">Payout Details <span
-                                                        class="float-right">80%</span></h4>
-                                                <div class="progress mb-4">
-                                                    <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
-                                                        aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                                <h4 class="small font-weight-bold">Account Setup <span
-                                                        class="float-right">Complete!</span></h4>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
-                                                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -345,6 +305,4 @@
             </div>
         </div>
     </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
-</body>
-</html>
+@endsection

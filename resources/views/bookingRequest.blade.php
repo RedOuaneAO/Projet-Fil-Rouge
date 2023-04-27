@@ -21,27 +21,47 @@
             <div class="col-md-8">
                 <div class="w-75 mx-auto mx-md-0">
                     <label>check-in</label>
-                    <input type="date" class="form-control" disabled>
+                    <input type="date" class="form-control" value="{{$check_in}}" disabled>
                     <label>checkout</label>
-                    <input type="date" class="form-control" disabled>
+                    <input type="date" class="form-control" value="{{$checkout}}" disabled>
                 </div>
+                <form role="form" 
+                action="{{ route('stripe.post') }}" 
+                method="post" 
+                class="require-validation"
+                data-cc-on-file="false"
+                data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
+                id="payment-form">
+                @csrf
                 <div class="w-75 row mx-auto mx-md-0">
                     <h4 class="mt-3">Payment Details :</h4>
-                    <div class="col-12">
-                        <label for=""></label>
-                        <input type="text" class="form-control" placeholder="****    ****    ****    ****">
-                    </div>
-                    <div class="col-8">
-                        <label for=""></label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="col-4">
-                        <label for=""></label>
-                        <input type="text" class="form-control" placeholder=" C V V">
-                    </div>
-                    <div>
-                        <button class="btn filter_button form-control mt-3 border-danger">Reserve</button>
-                    </div>
+                    <input type="number" class="form-control d-none" name="price" value="{{$price}}">
+                    <input type="date" class="form-control d-none" name="check_in" value="{{$check_in}}">
+                    <input type="date" class="form-control d-none" name="checkout" value="{{$checkout}}">
+                        <div class="col-12">
+                            <label for="">Name on Card</label>
+                            <input type="text" class="form-control" name="card_Name" placeholder="Name on Card">
+                        </div>
+                        <div class="col-12">
+                            <label for="">Card Number</label>
+                            <input type="number" class="form-control" name="card_Number" placeholder="****    ****    ****    ****">
+                        </div>
+                        <div class="col-4">
+                            <label for="">Expiration Month</label>
+                            <input type="number" class="form-control" name="Exp_Month" placeholder='MM' size='2'>
+                        </div>
+                        <div class="col-4">
+                            <label for="">Expiration Year</label>
+                            <input type="number" class="form-control" name="Exp_Year" placeholder='YYYY' size='4'>
+                        </div>
+                        <div class="col-4">
+                            <label for="">CVV</label>
+                            <input type="number" class="form-control" name="Cvv" placeholder='ex. 311' size='4'>
+                        </div>
+                        <div>
+                            <button class="btn filter_button form-control mt-3 border-danger">Reserve</button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="col-md-4 card shadow h-50 my-md-0 my-4">
@@ -74,3 +94,8 @@
     </section>
 </body>
 </html>
+
+
+
+
+

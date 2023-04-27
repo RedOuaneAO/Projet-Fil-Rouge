@@ -107,8 +107,9 @@ class ApartmentController extends Controller
 
     public function myApartment($id){
         $Apartments = Apartment::where('user_id',$id)->with('images')->get();
+        // return $Apartments->count();
         if ($Apartments->count() === 0) {
-            $message = 'No apartments found.';
+            $message = 'Please Add Apartment.';
             return view('myApartment', compact('message'));
         } else {
             return view('myApartment', compact('Apartments'));

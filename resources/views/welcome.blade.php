@@ -1,54 +1,40 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"/>
-    <link rel="stylesheet" href="/css/style.css">
-
-        <title>Home</title>
-    </head>
-    <body style="background: url(img/home.jpg);  background-attachment:fixed; background-size:cover; height:100vh">
+@extends('layouts.master')
+@section('title', 'profile')
+@section('content')
+        <div style="background: url(img/home.jpg);  background-attachment:fixed; background-size:cover; height:100vh">
         <div style="height:100vh" class="container-fluid">
-            <div class="justify-content-between d-flex p-3">
-                <h4 class="text-danger"><span class="text-white">Rent</span>It</h4>
-                <ul class="nav">
+            <nav class="navbar navbar-expand-lg bg-light">
+                <div class="container-fluid">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active disabled" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#Apartment">Apartment</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#About">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="{{route('profile')}}">Profile</a>
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#Contact">Contact</a>
+                        <a class="nav-link" href="#">Features</a>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
                     </li>
-                    <li class="nav-item dropdown dropstart ">
-                        <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="bi bi-list text-white"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{route('adminDash')}}">Login</a></li>
-                            <li><a class="dropdown-item" href="{{route('register')}}">Sign Up</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Logout</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
                     </li>
-                </ul>
-            </div>
+                    </ul>
+                </div>
+                </div>
+            </nav>
             <div class="mt-5">
                 <div class="d-flex justify-content-center align-items-center">
                     <p class="text-white" style="font-size:60px;">Get your Rental Apartment</p>
                 </div>
                 <div class="d-flex justify-content-center ">
-                    <button class="btn btn-danger">Login</button>
+                    <a href="{{route('login')}}" class="btn border-danger">Login</a>
                     <a href="{{route('register')}}" class="btn border-danger text-danger ms-3">Register</a>
                 </div>
-            </div>
             </div>
         </div>
         <section id="Apartment" class="" style=" background-color:white;">
@@ -150,31 +136,31 @@
                 </button>
             </div>
         </section>
-        <section id="About" class="container-fluid" style=" background-color:white;height:100vh">
+        <section id="About" class="container-fluid" style=" background-color:rgb(231, 231, 231);height:100vh">
             <h2 class="d-flex justify-content-center p-5">About<span class="text-danger">Us</span></h2>
-            <div class="d-flex">
-                <div class="ms-3">
-                    <img src="./img/family.jpg" width="400px" alt="">
+            <div class="row bg-secondary h-100">
+                <div class="col-6 bg-success">
+                    <img src="./img/family.jpg" width="150" alt="">
                 </div>
-                <div>
-                    <p class="p-5">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam magnam corporis neque quisquam, iste vitae dolores repellat cupiditate, natus nam dolore. Iusto quis, sint non laborum porro assumenda itaque nulla accusamus eveniet eaque repellat laudantium perspiciatis consequatur eum deserunt et sit, est ab? Consequatur corrupti qui quae doloribus labore adipisci enim eos. Expedita in consequuntur natus accusantium impedit amet enim ab explicabo sint consectetur, atque eum? Repellat, vitae ducimus saepe velit impedit dicta deleniti. Libero nulla alias dignissimos, fugiat beatae vero? Saepe quos rem vitae exercitationem, id perspiciatis ab inventore quam ad adipisci debitis esse quaerat, veritatis, odit odio cupiditate?</p>
+                <div class="bg-danger col-6">
+                    <p class="">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam magnam corporis neque quisquam, iste vitae dolores repellat cupiditate, natus nam dolore. Iusto quis, sint non laborum porro assumenda itaque nulla accusamus eveniet eaque repellat laudantium perspiciatis consequatur eum deserunt et sit, est ab? Consequatur corrupti qui quae doloribus labore adipisci enim eos. Expedita in consequuntur natus accusantium impedit amet enim ab explicabo sint consectetur, atque eum? Repellat, vitae ducimus saepe velit impedit dicta deleniti. Libero nulla alias dignissimos, fugiat beatae vero? Saepe quos rem vitae exercitationem, id perspiciatis ab inventore quam ad adipisci debitis esse quaerat, veritatis, odit odio cupiditate?</p>
                 </div>
             </div>
         </section>
-        <section class="bg-white">
+        {{-- <section class="bg-white">
             <div class="d-flex justify-content-evenly">
                 <img src="./img/paypal.png" width="100" alt="">
                 <img src="./img/payonner.png" width="100" alt="">
                 <img src="./img/visa.png" width="100" alt="">
                 <img src="./img/master.png" width="100" alt="">
             </div>
-        </section>
-        <section id="Contact"  class="bg-dark bg-opacity-50 container-fluid">
+        </section> --}}
+        <section id="Contact"  class="bg-dark bg-opacity-50 container-fluid mt-5 pt-5">
             <h2 class="d-flex justify-content-center text-white pt-5">Contact<span class="text-danger">Us</span></h2>
             <div class="row gap-2">
-                <p class="text-white p-5 col-5">Rentit is your go-to destination for finding the perfect apartment rental. Our user-friendly platform makes the process easy and stress-free, with a wide selection of apartments in prime locations.
+                <p class="text-white p-5 col-12 col-md-5">Rentit is your go-to destination for finding the perfect apartment rental. Our user-friendly platform makes the process easy and stress-free, with a wide selection of apartments in prime locations.
                 </p>
-                <form class="col-5 p-5">
+                <form class="col-md-5 col-12 p-5">
                     <input type="email" class="form-control" placeholder="Your Email">
                     <textarea class="form-control my-2" placeholder="Your Message"></textarea>
                     <input type="submit" value="Send" class="btn btn-danger">
@@ -183,17 +169,5 @@
                 <h6 class="d-flex text-white justify-content-center p-2">Copy right . Rent<span class="text-danger">it</span></h6>
         </section>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
-    <script> 
-    let card =document.querySelectorAll('.cardd');
-    card.forEach(function(element) {
-        element.addEventListener("mouseover", function() {
-            this.classList.add("shadow");
-        });
-        element.addEventListener("mouseout", function() {
-            this.classList.remove("shadow");
-        });
-    });
-    </script>
-    </body>
-</html>
+        </div>
+        @endsection
