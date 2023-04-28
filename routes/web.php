@@ -53,6 +53,7 @@ Route::get('/deleteApartment/{id}', [ApartmentController::class , 'deleteApartme
 Route::post('/updateApartmentView/{id}', [ApartmentController::class , 'updateApartmentView']);
 Route::put('/updateApartment/{id}', [ApartmentController::class , 'updateApartment'])->name('updateApart');
 Route::post('/apartmentsList', [ApartmentController::class , 'filter'])->name('filter');
+Route::get('/myReservation',[ApartmentController::class , 'reservedApart']);
 
 // ----------admindash
 Route::get('/adminDash',[AdminController::class , 'getdata'])->name('adminDash');

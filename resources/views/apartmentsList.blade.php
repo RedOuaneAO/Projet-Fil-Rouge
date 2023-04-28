@@ -52,6 +52,11 @@
                                 <span class="ms-1 d-none d-sm-inline">My apartments</span> </a>
                         </li>
                         <li>
+                            <a href="/myReservation" class="nav-link px-0 text-black">
+                                <i class="bi bi-bookmark-check"></i>
+                                <span class="ms-1 d-none d-sm-inline">My Reservation</span> </a>
+                        </li>
+                        <li>
                             <a href="/logout" class="nav-link px-0 text-black">
                                 <i class="bi bi-box-arrow-left"></i>
                                 <span class="ms-1 d-none d-sm-inline">Logout</span> </a>
@@ -127,6 +132,12 @@
                                                 <p class="card-text fw-bold mb-0" style="font-size: 14px">{{ $apartment->roomsNumber }} <span class="text-secondary">Rooms</span></p>
                                                 <p class="card-text text-secondary my-2" style="font-size: 14px"><i class="bi bi-geo-alt text-danger"></i> {{ $apartment->city . ' - ' . $apartment->address }}</p>
                                                 <p><span class="fw-bold me-2">{{ $apartment->price }} DH</span>per night</p>
+                                                @if(App\Http\Controllers\ApartmentController::checkReservation($apartment->id))
+                                                <div class="position-absolute top-0 end-0">
+                                                    {{-- <i class="bi bi-bookmark-check text-danger fs-2"></i> --}}
+                                                    <i class="bi bi-bookmark-check-fill fs-2"></i>
+                                                </div>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>

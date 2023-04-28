@@ -52,6 +52,11 @@
                                 <span class="ms-1 d-none d-sm-inline">My apartments</span> </a>
                         </li>
                         <li>
+                            <a href="/myReservation" class="nav-link px-0 text-black">
+                                <i class="bi bi-bookmark-check"></i>
+                                <span class="ms-1 d-none d-sm-inline">My Reservation</span> </a>
+                        </li>
+                        <li>
                             <a href="/logout" class="nav-link px-0 text-black">
                                 <i class="bi bi-box-arrow-left"></i>
                                 <span class="ms-1 d-none d-sm-inline">Logout</span> </a>
@@ -76,38 +81,28 @@
                     @else
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 ">
-                            <h6 class="m-0 fw-bold text-primary">My Apartment</h6>
+                            <h6 class="m-0 fw-bold text-primary">My Reservation</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped border">
                                     <thead class="bg-secondary bg-opacity-25">
                                         <tr>
-                                            <th scope="col">Image</th>
                                             <th scope="col">Title</th>
-                                            <th scope="col">Address</th>
                                             <th scope="col">City</th>
-                                            <th scope="col">RoomsNumber</th>
-                                            <th scope="col">Price</th>
-                                            <th scope="col"></th>
+                                            <th scope="col">Total Payed</th>
+                                            <th scope="col">Check in </th>
+                                            <th scope="col">Checkout</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($Apartments as $apartment)
+                                        @foreach ($reservedApart as $apartment)
                                             <tr>
-                                                <td><img src="/img/{{$apartment->images[0]->image}}" width="50"></td>
                                                 <td>{{ $apartment->title }}</td>
-                                                <td>{{ $apartment->address }}</td>
                                                 <td>{{ $apartment->city }}</td>
-                                                <td>{{ $apartment->roomsNumber }}</td>
-                                                <td>{{ $apartment->price }}</td>
-                                                <td>
-                                                    <a href="/deleteApartment/{{$apartment->id}}" class="btn"><i class="bi bi-x-circle text-danger"></i></a>
-                                                    <form action="/updateApartmentView/{{$apartment->id}}" method="POST">
-                                                        @csrf 
-                                                        <button class="btn"><i class="bi bi-pencil-square text-success"></i></button>
-                                                    </form>
-                                                </td>
+                                                <td>{{ $apartment->total_payed }} DH</td>
+                                                <td>{{ $apartment->check_in }}</td>
+                                                <td>{{ $apartment->checkout }}</td>
                                             </tr>
                                         @endforeach 
                                     </tbody>

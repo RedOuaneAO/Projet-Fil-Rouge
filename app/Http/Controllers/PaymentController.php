@@ -49,7 +49,6 @@ class PaymentController extends Controller
                 'cvc' => $Cvv,
             ],
         ]);
-        // $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
         $stripe->charges->create([
             'amount' => $amount,
             'currency' => 'mad',
@@ -65,6 +64,6 @@ class PaymentController extends Controller
             'checkout'=>$checkout,
         ]);
         
-        return 'success';
+        return redirect('/myReservation');
     }
 }

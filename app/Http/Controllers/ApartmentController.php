@@ -15,7 +15,7 @@ class ApartmentController extends Controller
 {
 
     public function displayAprtment(){
-        $Apartments = Apartment::with('images')->get();
+        $Apartments = Apartment::with('images')->orderBy('id','DESC')->get();
         if ($Apartments->count() === 0) {
             $message = 'No apartments found.';
             return view('apartmentsList', compact('message'));
@@ -62,9 +62,8 @@ class ApartmentController extends Controller
     }
 
     public function displayAprtmentDetails($id){
-        $apartDetails= Apartment::where('id',$id)->with('images')->with('user')->get();
+        $apartDetails= Apartment::where('id',$id)->with('images')->with('user')->with('offers')->first();
         $apartComments=Comment::where('apartment_id',$id)->with('user')->orderBy('id','DESC')->get();
-        // return $apartDetails;
         return view('/apartmentDetails', compact('apartDetails' , 'apartComments'));
     }
 
@@ -129,26 +128,6 @@ class ApartmentController extends Controller
         return redirect('/myApartment/'.Auth::user()->id,);
     }
 
-    public function myApartment($id){
-        $Apartments = Apartment::where('user_id',$id)->with('images')->get();
-        if ($Apartments->count() === 0) {
-            $message = 'Please Add Apartment.';
-            return view('myApartment', compact('message'));
-        } else {
-            return view('myApartment', compact('Apartments'));
-        }
-    }
-
-    public function favoriteApart($id){
-        $Apartments = Apartment::whereHas('favorites', function ($query) use ($id) {$query->where('user_id', $id);})->with('images')->get();
-        return view('/myFavorite', compact('Apartments'));
-    }
-
-    public static function checkFavorite($id){
-        $favorite = DB::table('favorites')->where('apartment_id', $id)->where('user_id', Auth::user()->id)->get();
-        return $favorite->isNotEmpty();
-    }
-
     public function filter(Request $Request){
         $query =Apartment::query();
         if($Request->minPrice){
@@ -165,6 +144,39 @@ class ApartmentController extends Controller
             return view('apartmentsList', compact('Apartments'));
         }
     }
+
+    public function reservedApart(){
+        $reservedApart = DB::table('reservations')
+        ->join('users', 'reservations.user_id', '=', 'users.id')
+        ->join('apartments', 'reservations.apartment_id', '=', 'apartments.id')
+        ->where('reservations.user_id', Auth::user()->id)
+        ->select('reservations.*', 'users.name', 'apartments.title', 'apartments.city')
+        ->get();
+        return view('myReservation', compact('reservedApart'));
+    }
+    public function myApartment($id){
+        $Apartments = Apartment::where('user_id',$id)->with('images')->get();
+        if ($Apartments->count() === 0) {
+            $message = 'Please Add Apartment.';
+            return view('myApartment', compact('message'));
+        } else {
+            return view('myApartment', compact('Apartments'));
+        }
+    }
+
+    
+    public static function checkFavorite($id){
+        $favorite = DB::table('favorites')->where('apartment_id', $id)->where('user_id', Auth::user()->id)->get();
+        return $favorite->isNotEmpty();
+    }
+    public static function checkReservation($id){
+        $reserved = DB::table('reservations')->where('apartment_id', $id)->get();
+        return $reserved->isNotEmpty();
+    }
+    
+    public function favoriteApart($id){
+        $Apartments = Apartment::whereHas('favorites', function ($query) use ($id) {$query->where('user_id', $id);})->with('images')->get();
+        return view('/myFavorite', compact('Apartments'));
+    }
+
 }
-
-

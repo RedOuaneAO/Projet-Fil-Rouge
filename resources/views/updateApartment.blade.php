@@ -52,6 +52,11 @@
                                 <span class="ms-1 d-none d-sm-inline">My apartments</span> </a>
                         </li>
                         <li>
+                            <a href="/myReservation" class="nav-link px-0 text-black">
+                                <i class="bi bi-bookmark-check"></i>
+                                <span class="ms-1 d-none d-sm-inline">My Reservation</span> </a>
+                        </li>
+                        <li>
                             <a href="/logout" class="nav-link px-0 text-black">
                                 <i class="bi bi-box-arrow-left"></i>
                                 <span class="ms-1 d-none d-sm-inline">Logout</span> </a>
@@ -135,10 +140,10 @@
                                     <label>What this accommodation offers</label>
                                     <div>
                                         @foreach ($apartOffers as $apartOffer)
-                                        <div>
-                                            <input type="checkbox" class="me-2" name="offers[]" value="{{$apartOffer->id}}" {{in_array($apartOffer->id, $apartment->offers->pluck('id')->toArray()) ? 'checked' : ''}} id="check">
-                                            <label for="check">{{$apartOffer->offer}}</label>
-                                        </div>
+                                            <div>
+                                                <input type="checkbox" class="me-2" name="offers[]" value="{{$apartOffer->id}}" {{in_array($apartOffer->id, $apartment->offers->pluck('id')->toArray()) ? 'checked' : ''}} id="check">
+                                                <label for="check">{{$apartOffer->offer}}</label>
+                                            </div>
                                         @endforeach
                                     </div>
                                 </div> <br>
