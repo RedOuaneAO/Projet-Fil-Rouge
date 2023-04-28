@@ -16,8 +16,10 @@ return new class extends Migration
         //
         Schema::create('favorites', function (Blueprint $table) {
             $table->id();
-            $table->integer('apartment_id');
-            $table->integer('user_id');
+            $table->unsignedBigInteger('apartment_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('apartment_id')->references("id")->on("apartments")->onDelete("cascade");
+            $table->foreign('user_id')->references("id")->on("users")->onDelete("cascade");
             $table->timestamps();
         });
     }

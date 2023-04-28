@@ -17,6 +17,7 @@ class AuthController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6',
+            'confirm_pass' => 'required|string|min:6|same:password',
         ]);
 
         $user = User::create([
@@ -25,7 +26,6 @@ class AuthController extends Controller
             'password' => Hash::make($Request->password),
         ]);
         return redirect('/register')->with('success','Your account has been created successfuly');  
-        // $token = Auth::login($user);
     }
     public function login(Request $Request)
     {
@@ -44,11 +44,12 @@ class AuthController extends Controller
     public function logout() {
         Auth::logout(); 
         // $Request->session()->invalidate(); 
-        // $Request->session()->regenerateToken();
         return redirect('/'); 
     }
     public function get(){
         $variable = DB::table('cities')->get();
-        return view('index' , compact('variable'));
+        $apartOffers = DB::table('offers')->get();
+        // return $apartOffers;
+        return view('index' , compact('variable' , 'apartOffers'));
     }
 }

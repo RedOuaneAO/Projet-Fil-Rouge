@@ -24,18 +24,30 @@
                     <div class="">
                         <label  class="fw-bold">Full name</label>
                         <input type="text" name="name" class="form-control" placeholder="Full Name">
+                        @error('name')
+                            <div class="text-danger mt-2">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="">
                         <label  class="fw-bold">Email</label>
                         <input type="email" name="email" class="form-control" placeholder="Email">
+                        @error('email')
+                            <div class="text-danger mt-2">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="">
                         <label  class="fw-bold">Password</label>
                         <input type="password" name="password" class="form-control" placeholder="Password">
+                        @error('password')
+                            <div class="text-danger mt-2">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="">
                         <label for="" class="fw-bold">confirm Password</label>
-                        <input type="password" name="password" class="form-control" placeholder="Password">
+                        <input type="password" name="confirm_pass" class="form-control" placeholder="Password">
+                        @error('confirm_pass')
+                            <div class="text-danger mt-2">{{ $message }}</div>
+                        @enderror
                     </div>
                     <button type="submit" class="btn btn-primary form-control my-3 fw-bold">Sign Up</button>
                     <div class="mb-3">

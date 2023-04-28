@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Session;
 use Stripe;
+use Session;
 use DateTime;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
@@ -15,6 +17,7 @@ class PaymentController extends Controller
             'price'=>$Request->price,
             'check_in'=>$Request->check_in,
             'checkout'=>$Request->checkout,
+            'apartId'=>$Request->apartId,
         ]);
         
     }
@@ -26,13 +29,6 @@ class PaymentController extends Controller
      */
     public function stripePost(Request $Request)
     {
-        // $Request->validate([
-        //     'card_Name' => 'required|string|max:255',
-        //     'card_Number' => 'required|min:16|max:20',
-        //     'Exp_Month' => 'required|min:2|max:2',
-        //     'Exp_Year' => 'required|min:4|max:4',
-        //     'Cvv' => 'required|min:3|max:3',
-        // ]);
         $card_Name =$Request->card_Name;
         $card_Number =$Request->card_Number;
         $Exp_Month =$Request->Exp_Month;
@@ -41,6 +37,7 @@ class PaymentController extends Controller
         $price =$Request->price;
         $check_in=$Request->check_in;
         $checkout=$Request->checkout;
+        $apartId=$Request->apartId;
         $days= (new DateTime($checkout))->diff(new DateTime($check_in))->days;
         $amount =($price * $days)*100;
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
@@ -52,12 +49,20 @@ class PaymentController extends Controller
                 'cvc' => $Cvv,
             ],
         ]);
-        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+        // $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
         $stripe->charges->create([
             'amount' => $amount,
             'currency' => 'mad',
             'source' => $token->id,
             'description' => 'My First Test Charge',
+        ]);
+
+        DB::table('reservations')->insert([
+            'user_id'=> Auth::user()->id,
+            'apartment_id'=>$apartId,
+            'total_payed'=>$amount ,
+            'check_in'=>$check_in ,
+            'checkout'=>$checkout,
         ]);
         
         return 'success';

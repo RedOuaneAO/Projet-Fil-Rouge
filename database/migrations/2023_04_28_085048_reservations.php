@@ -14,11 +14,13 @@ return new class extends Migration
     public function up()
     {
         //
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->string('comment');
-            $table->unsignedBigInteger('apartment_id');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('apartment_id');
+            $table->integer('total_payed');
+            $table->date('check_in');
+            $table->date('checkout');
             $table->foreign('apartment_id')->references("id")->on("apartments")->onDelete("cascade");
             $table->foreign('user_id')->references("id")->on("users")->onDelete("cascade");
             $table->timestamps();
@@ -33,7 +35,6 @@ return new class extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('comments');
-
+        Schema::dropIfExists('reservations');
     }
 };

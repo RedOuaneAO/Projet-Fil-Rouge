@@ -85,12 +85,21 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label>Number of the guest</label><input type="number" name="guestsNumber" class="form-control">
+                                            @error('guestsNumber')
+                                                <div class="text-danger mt-2">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="col-md-6">
                                             <label>Price</label><input type="number" name="price" class="form-control">
+                                            @error('price')
+                                                <div class="text-danger mt-2">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="col-md-6">
                                             <label>Number of the rooms</label><input type="number" name="roomsNumber" class="form-control">
+                                            @error('roomsNumber')
+                                                <div class="text-danger mt-2">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="row mt-3">
@@ -102,17 +111,30 @@
                                                     <option value="{{$var->city}}">{{$var->city}}</option>
                                                 @endforeach
                                             </select>
+                                            @error('city')
+                                                <div class="text-danger mt-2">{{ $message }}</div>
+                                            @enderror
                                         </div>
-                                        <div class="col-md-12"><label>Address</label>
-                                            <input type="text" class="form-control" name="address" placeholder="Inter the apartment Address"></div>
-                                        <div class="col-md-12"><label>Images</label><input type="file" name="image[]" id="inputId" class="form-control" multiple></div>
+                                        <div class="col-md-12">
+                                            <label>Address</label>
+                                            <input type="text" class="form-control" name="address" placeholder="Inter the apartment Address">
+                                            @error('address')
+                                                <div class="text-danger mt-2">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label>Images</label>
+                                            <input type="file" name="image[]" id="inputId" class="form-control" multiple>
+                                            @error('image')
+                                                <div class="text-danger mt-2">{{ $message }}</div>
+                                            @enderror
+                                        </div>
                                     </div>
                                     <div class="mt-5 text-center">
                                         <button class="btn btn-primary" type="submit" type="button">Add</button>
                                     </div>
-                                </form>
+                                </div>
                             </div>
-                        </div>
                         <div class="col-md-4">
                             <div class="p-3 py-5">
                                 <div class="d-flex justify-content-between align-items-center experience">
@@ -126,27 +148,14 @@
                                 <div class="col-md-12">
                                     <label>What this accommodation offers</label>
                                     <div>
+                                        @foreach ($apartOffers as $apartOffer)
                                         <div>
-                                            <input type="checkbox" class="me-2">
-                                            <span>Wifi</span>
+                                            <input type="checkbox" class="me-2" name="offers[]" value="{{$apartOffer->id}}" id="check">
+                                            <label for="check">{{$apartOffer->offer}}</label>
                                         </div>
-                                        <div>
-                                            <input type="checkbox" class="me-2">
-                                            <span>Pool</span>
-                                        </div>
-                                        <div>
-                                            <input type="checkbox" class="me-2">
-                                            <span>Free parking on site</span>
-                                        </div>
-                                        <div>
-                                            <input type="checkbox" class="me-2">
-                                            <span>air conditioner</span>
-                                        </div>
-                                        <div>
-                                            <input type="checkbox" class="me-2">
-                                            <span>accepted animals</span>
-                                        </div>
+                                        @endforeach
                                     </div>
+                                </form>
                                 </div> <br>
                             </div>
                         </div>

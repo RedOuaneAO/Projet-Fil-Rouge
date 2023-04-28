@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Image;
+use App\Models\Offer;
 use App\Models\Comment;
 use App\Models\Favorite;
 use App\Models\Apartment;
@@ -24,7 +25,18 @@ class ApartmentController extends Controller
     }
 
     public function store(Request $Request){
-        $apartment= Apartment::create([
+        // return $Request;
+        $validate= $Request->validate([
+            'title' => 'required|max:255',
+            'price' => 'required|numeric',
+            'roomsNumber' => 'required|integer',
+            'guestsNumber' => 'required|integer|max:10',
+            'address' => 'required|max:255',
+            'city' => 'required',
+            'image.*' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'required|array|min:5|max:5',
+        ]);
+        $apartment= Apartment::with('offers')->create([
             'title'=>$Request->title,
             'price'=>$Request->price,
             'roomsNumber'=>$Request->roomsNumber,
@@ -33,6 +45,10 @@ class ApartmentController extends Controller
             'user_id'=>Auth::user()->id,
             'city'=>$Request->city,
         ]);
+        $offers = $Request->offers;
+        if ($offers) {
+            $apartment->offers()->attach($offers);
+        }
         $images = $Request->file('image');
         foreach ($images as $image) {
             $filename = $image->getClientOriginalName();
@@ -74,12 +90,16 @@ class ApartmentController extends Controller
     }
 
     public function updateApartmentView($id){
-        $apartment= Apartment::where('id',$id)->with('images')->first();
+        $apartment= Apartment::with('images' , 'offers')->find($id);
+        // dd($apartment);
         $variable = DB::table('cities')->get();
-        return view('updateApartment' , compact('variable','apartment'));
+        $apartOffers = Offer::all();
+        // return $apartOffers;
+        return view('updateApartment' , compact('variable','apartment','apartOffers'));
     }
 
     public function updateApartment(Request $Request ,$id){
+        
         $apartment = Apartment::findOrFail($id);    
         if($Request->hasFile('image')){
             Image::where('apartment_id', $apartment->id)->delete();      // Delete existing images associated with the apartment
@@ -102,12 +122,15 @@ class ApartmentController extends Controller
             'user_id'=>Auth::user()->id,
             'city'=>$Request->city,
         ]);
+        $offers = $Request->offers;
+        if ($offers) {
+            $apartment->offers()->sync($offers);
+        }
         return redirect('/myApartment/'.Auth::user()->id,);
     }
 
     public function myApartment($id){
         $Apartments = Apartment::where('user_id',$id)->with('images')->get();
-        // return $Apartments->count();
         if ($Apartments->count() === 0) {
             $message = 'Please Add Apartment.';
             return view('myApartment', compact('message'));

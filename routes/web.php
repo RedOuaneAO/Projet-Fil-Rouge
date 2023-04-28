@@ -44,7 +44,7 @@ Route::get('/index', [AuthController::class , 'get'])->name('index');
 Route::post('/index', [ApartmentController::class , 'store'])->name('aprtmentStore');
 Route::get('/apartmentsList', [ApartmentController::class , 'displayAprtment'])->name('apartmentsListdisplay');
 Route::get('/myFavorite/{id}',[ApartmentController::class , 'favoriteApart']);
-Route::get('/apartmentDetails/{id}', [ApartmentController::class , 'displayAprtmentDetails'])->name('red');
+Route::get('/apartmentDetails/{id}', [ApartmentController::class , 'displayAprtmentDetails'])->name('details');
 Route::post('/apartmentDetails/{id}', [CommentController::class , 'addComment']);
 Route::post('/deleteComment/{id}', [CommentController::class , 'deleteComment']);
 Route::post('/favorite/{id}', [ApartmentController::class , 'addToFavorite']);

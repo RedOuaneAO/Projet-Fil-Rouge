@@ -134,22 +134,12 @@
                                 <div class="col-md-12">
                                     <label>What this accommodation offers</label>
                                     <div>
+                                        @foreach ($apartOffers as $apartOffer)
                                         <div>
-                                            <input type="checkbox" class="me-2">
-                                            <span>Wifi</span>
+                                            <input type="checkbox" class="me-2" name="offers[]" value="{{$apartOffer->id}}" {{in_array($apartOffer->id, $apartment->offers->pluck('id')->toArray()) ? 'checked' : ''}} id="check">
+                                            <label for="check">{{$apartOffer->offer}}</label>
                                         </div>
-                                        <div>
-                                            <input type="checkbox" class="me-2">
-                                            <span>Pool</span>
-                                        </div>
-                                        <div>
-                                            <input type="checkbox" class="me-2">
-                                            <span>Free parking on site</span>
-                                        </div>
-                                        <div>
-                                            <input type="checkbox" class="me-2">
-                                            <span>air conditioner</span>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div> <br>
                             </div>

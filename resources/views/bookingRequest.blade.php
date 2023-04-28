@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"/>
-    <link rel="stylesheet" href="/css/style.css">
-    <title>Document</title>
-</head>
-<body>
+@extends('layouts.master')
+@section('title', 'profile')
+@section('content')
     <section class="container mt-4">
         <div class="d-flex justify-content-between  mb-5">
             <div class="d-flex flex-row align-items-center">
@@ -36,6 +27,7 @@
                 <div class="w-75 row mx-auto mx-md-0">
                     <h4 class="mt-3">Payment Details :</h4>
                     <input type="number" class="form-control d-none" name="price" value="{{$price}}">
+                    <input type="number" class="form-control d-none" name="apartId" value="{{$apartId}}">
                     <input type="date" class="form-control d-none" name="check_in" value="{{$check_in}}">
                     <input type="date" class="form-control d-none" name="checkout" value="{{$checkout}}">
                         <div class="col-12">
@@ -92,8 +84,7 @@
 
         </div>
     </section>
-</body>
-</html>
+@endsection
 
 
 

@@ -118,7 +118,7 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between">
-                                                <h5 class="card-title fw-bold"  style="font-size: 18px;">{{ $apartment->title }}</h5>
+                                                <h5 class="card-title fw-bold text-uppercase"  style="font-size: 18px;">{{ $apartment->title }}</h5>
                                                 @if(App\Http\Controllers\ApartmentController::checkFavorite($apartment->id))
                                                     <i class="bi bi-heart-fill"></i>
                                                 @endif

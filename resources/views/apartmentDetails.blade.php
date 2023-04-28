@@ -28,14 +28,14 @@
         <div class="apartment-details">
             <div class="apartmen-title d-flex justify-content-between">
                 <div class="">
-                    <h2>{{$apartDetails[0]->title}}</h2>
-                    <div class="">
+                    <h2 class="text-uppercase">{{$apartDetails[0]->title}}</h2>
+                    {{-- <div class="">
                         <i class="bi bi-star-fill text-danger"></i>
                         <i class="bi bi-star-fill text-danger"></i>
                         <i class="bi bi-star-fill text-danger"></i>
                         <i class="bi bi-star-half text-danger"></i>
                         <span>189 Review</span>
-                    </div>
+                    </div> --}}
                     <div >
                         <p><span class="fw-bold">Location :</span> {{$apartDetails[0]->city .' - '.  $apartDetails[0]->address}}</p>
                     </div>
@@ -120,7 +120,8 @@
                         <div class="card-body">
                             <form action="/bookingRequest" method="post">
                                 @csrf
-                                <input type="number" name="price" value="{{$apartDetails[0]->price}}" class="form-control">
+                                <input type="number" name="price" value="{{$apartDetails[0]->price}}" class="form-control d-none">
+                                <input type="number" name="apartId" value="{{$apartDetails[0]->id}}" class="form-control d-none">
                                     <div class="px-4 py-2">
                                         <label for="">Check in </label>
                                         <input type="date" name="check_in" class="form-control">
